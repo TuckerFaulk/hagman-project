@@ -16,7 +16,7 @@ SHEET = GSPREAD_CLIENT.open("hangman_categories")
 
 def select_category():
     """
-    Request for user to select word category or for a random category to be chosen
+    Request for user to select the game category or for a random category to be chosen
     """
     print("Please select one of the following categories, or choose 'Random' if you would like us to pick one for you.\n")
 
@@ -44,3 +44,10 @@ def select_category():
         print(f"The random category selected for you is {categories_row[category_column]}.\n")
     
     return category_column
+
+
+def main():
+    """
+    Run all program functions
+    """
+    column = select_category()
