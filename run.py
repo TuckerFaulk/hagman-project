@@ -166,6 +166,8 @@ class PlayGame:
         """
         Removes life if an incorrect guess has been made
         """
+        self.lives -= 1
+        return self.lives
 
 
 def main():
@@ -182,6 +184,8 @@ def main():
 
 game = PlayGame("F", "FOLLOW", "------", 5)
 
-boolean = game.change_hidden_letter()
+print(game.lives)
+
+boolean = game.remove_life()
 print(boolean)
 
