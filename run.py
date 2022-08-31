@@ -136,18 +136,32 @@ class PlayGame:
             return True
         else:
             return False
-    
-    def change_hidden_word(self):
+
+    def change_hidden_letter(self):
         """
         Makes the guessed letter appear in the hidden game word
         """
+        list_index = 0
+        hidden_word_list = list(self.hidden_game_word)
+
+        for letter in self.game_word:
+
+            if letter == self.letter_guess:
+                hidden_word_list[list_index] = self.letter_guess
+
+            list_index += 1
+
+        self.hidden_game_word = ''.join(hidden_word_list)
+        return self.hidden_game_word
 
     def remove_letter_guess(self):
         """
-        Removes the guessed letter from the  alphabet 
+        Removes the guessed letter from the  alphabet
         so it can not be guessed again
         """
-    
+        PlayGame.alphabet.remove(self.letter_guess)
+        return PlayGame.alphabet
+
     def remove_life(self):
         """
         Removes life if an incorrect guess has been made
@@ -166,8 +180,8 @@ def main():
 
 # main()
 
-game = PlayGame("L", "player", "---", 5)
+game = PlayGame("F", "FOLLOW", "------", 5)
 
-boolean = game.check_game_word()
+boolean = game.change_hidden_letter()
 print(boolean)
 
