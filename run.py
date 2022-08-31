@@ -12,6 +12,7 @@ CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("hangman_categories")
+CATEGORIES = SHEET.worksheet("categories")
 
 
 def select_difficluty():
@@ -48,8 +49,7 @@ def select_category():
     """
     print("Please select one of the following categories, or choose 'Random' if you would like us to pick one for you.\n")
 
-    categories = SHEET.worksheet("categories")
-    data = categories.get_all_values()
+    data = CATEGORIES.get_all_values()
     categories_row = data[0]
 
     num = 1
@@ -71,12 +71,30 @@ def select_category():
         print("")
         print(f"The random category selected for you is {categories_row[category_column]}.\n")
 
+    category_column += 1
+
     return category_column
+
+
+def retrieve_word(column):
+    """
+    Retrieve word, phrase or sentence from the selected category column
+    """
+    column_values = CATEGORIES.col_values(column)
+    column_values.pop(0)
+    rand_column_cell = randrange((len(column_values)))
+    game_word = column_values[rand_column_cell]
+    game_word.upper()
+
+    return game_word
 
 
 def main():
     """
     Run all program functions
     """
-    lives = select_difficluty()
+    # lives = select_difficluty()
     column = select_category()
+    game_word = retrieve_word(column)
+
+main()
