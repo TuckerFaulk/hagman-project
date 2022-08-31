@@ -115,6 +115,45 @@ def hide_game_word(game_word):
     return hidden_game_word
 
 
+class PlayGame:
+    """
+    Main game play class
+    """
+    # Class variable
+    alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+    def __init__(self, letter_guess, game_word, hidden_game_word, lives):
+        self.letter_guess = letter_guess
+        self.game_word = game_word
+        self.hidden_game_word = hidden_game_word
+        self.lives = lives
+
+
+    def check_game_word(self):
+        """
+        Checks if the letter guessed is in the game word: returns true or false
+        """
+    
+    
+    def change_hidden_word(self):
+        """
+        Makes the guessed letter appear in the hidden game word
+        """
+
+
+    def remove_letter_guess(self):
+        """
+        Removes the guessed letter from the  alphabet 
+        so it can not be guessed again
+        """
+    
+    
+    def remove_life(self):
+        """
+        Removes life if an incorrect guess has been made
+        """
+
+
 def main():
     """
     Run all program functions
@@ -122,7 +161,8 @@ def main():
     # lives = select_difficluty()
     column = select_category()
     game_word = retrieve_word(column)
-    hide_game_word(game_word)
+    hidden_game_word = hide_game_word(game_word)
+    # letter_guessed
 
 main()
 
