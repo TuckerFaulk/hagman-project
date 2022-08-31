@@ -115,7 +115,7 @@ def hide_game_word(game_word):
     return hidden_game_word
 
 
-class PlayGame:
+class Game:
     """
     Main game play class
     """
@@ -132,7 +132,7 @@ class PlayGame:
         """
         Checks if the letter guessed is in the game word: returns true or false
         """
-        if self.letter_guess in PlayGame.alphabet:
+        if self.letter_guess in Game.alphabet:
             return True
         else:
             return False
@@ -159,8 +159,8 @@ class PlayGame:
         Removes the guessed letter from the  alphabet
         so it can not be guessed again
         """
-        PlayGame.alphabet.remove(self.letter_guess)
-        return PlayGame.alphabet
+        Game.alphabet.remove(self.letter_guess)
+        return Game.alphabet
 
     def remove_life(self):
         """
@@ -170,22 +170,36 @@ class PlayGame:
         return self.lives
 
 
+# request player input
+# update Game.letter_guess
+
+# if Game.check_game_word():
+    # Game.change_hidden_letter()
+    # Game.remove_letter_guess()
+
+    # If word_complete(): --- function needs creating
+        # game_won() --- function needs creating
+    # else:
+        # request player input
+
+# else:
+    # Game.remove_life()
+    # Game.remove_letter_guess()
+
+    # if lives_remaining(): --- function needs creating
+        # request player input
+    # else:
+        # game_bust() --- function needs creating
+
+
 def main():
     """
     Run all program functions
     """
-    # lives = select_difficluty()
+    lives = select_difficluty()
     column = select_category()
     game_word = retrieve_word(column)
     hidden_game_word = hide_game_word(game_word)
-    # letter_guessed
+    game_vars = Game("", game_word, hidden_game_word, lives)
 
 # main()
-
-game = PlayGame("F", "FOLLOW", "------", 5)
-
-print(game.lives)
-
-boolean = game.remove_life()
-print(boolean)
-
