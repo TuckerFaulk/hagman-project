@@ -128,25 +128,25 @@ class PlayGame:
         self.hidden_game_word = hidden_game_word
         self.lives = lives
 
-
     def check_game_word(self):
         """
         Checks if the letter guessed is in the game word: returns true or false
         """
-    
+        if self.letter_guess in PlayGame.alphabet:
+            return True
+        else:
+            return False
     
     def change_hidden_word(self):
         """
         Makes the guessed letter appear in the hidden game word
         """
 
-
     def remove_letter_guess(self):
         """
         Removes the guessed letter from the  alphabet 
         so it can not be guessed again
         """
-    
     
     def remove_life(self):
         """
@@ -164,5 +164,10 @@ def main():
     hidden_game_word = hide_game_word(game_word)
     # letter_guessed
 
-main()
+# main()
+
+game = PlayGame("L", "player", "---", 5)
+
+boolean = game.check_game_word()
+print(boolean)
 
