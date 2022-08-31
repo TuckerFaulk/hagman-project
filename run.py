@@ -85,8 +85,18 @@ def retrieve_word(column):
     column_values.pop(0)
     rand_column_cell = randrange((len(column_values)))
     game_word = column_values[rand_column_cell]
-    game_word.upper()
+    # game_word.upper()
 
+    final_game_word = []
+
+    for letter in list(game_word):
+        if letter == " ":
+            letter = "/"
+            final_game_word.append(letter)
+        else:
+            final_game_word.append(letter)
+
+    game_word = ''.join(final_game_word)
     return game_word
 
 
@@ -100,12 +110,11 @@ def hide_game_word(game_word):
     hide_word = []
 
     for letter in game_word_split:
-        if letter == " ":
-            letter = "/"
-            hide_word.append(letter)
-        else:
+        if letter != "/":
             letter = "-"
             hide_word.append(letter)
+        else:
+            hide_word.append("/")
 
     hidden_game_word = ""
 
@@ -120,7 +129,8 @@ class Game:
     Main game play class
     """
     # Class variable
-    alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    # alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
     def __init__(self, letter_guess, game_word, hidden_game_word, lives):
         self.letter_guess = letter_guess
@@ -132,7 +142,7 @@ class Game:
         """
         Checks if the letter guessed is in the game word: returns true or false
         """
-        if self.letter_guess in Game.alphabet:
+        if self.letter_guess in list(self.game_word) and self.letter_guess in Game.alphabet:
             return True
         else:
             return False
@@ -170,26 +180,41 @@ class Game:
         return self.lives
 
 
-# request player input
-# update Game.letter_guess
+def play_game(game_word, hidden_game_word, lives):
+    """
+    Main game play
+    Checks whether game won, lost or to continue
+    """
+    game = Game("", game_word, hidden_game_word, lives)
+    print(game.alphabet)
+    letter_guess = input("Select a letter from the remaining in the letters above: ")
+    game.letter_guess = letter_guess
 
-# if Game.check_game_word():
-    # Game.change_hidden_letter()
-    # Game.remove_letter_guess()
+    print("")
 
-    # If word_complete(): --- function needs creating
-        # game_won() --- function needs creating
-    # else:
-        # request player input
+    if game.check_game_word():
+        game.change_hidden_letter()
+        game.remove_letter_guess()
 
-# else:
-    # Game.remove_life()
-    # Game.remove_letter_guess()
+        print(game.alphabet)
+        print(game.hidden_game_word)
 
-    # if lives_remaining(): --- function needs creating
-        # request player input
-    # else:
-        # game_bust() --- function needs creating
+        if game.hidden_game_word == game.game_word:
+            print(f"Congratulations!!! You have guessed the correct answer which was {game.game_word}, with {game.lives} lives remaining.\n")
+        else:
+            play_game(game.game_word, game.hidden_game_word, game.lives)
+
+    else:
+        game.remove_life()
+        game.remove_letter_guess()
+
+        print(game.alphabet)
+        print(f"You have {game.lives} lives remaining.\n")
+
+        if game.lives > 0:
+            play_game(game.game_word, game.hidden_game_word, game.lives)
+        else:
+            print(f"You have 0 lives remaining. The answer which you was guessing was {game.game_word}.\n")
 
 
 def main():
@@ -200,6 +225,11 @@ def main():
     column = select_category()
     game_word = retrieve_word(column)
     hidden_game_word = hide_game_word(game_word)
-    game_vars = Game("", game_word, hidden_game_word, lives)
+    print(game_word)
+    print(hidden_game_word)
+    print(game_word + "\n")
+    play_game(game_word, hidden_game_word, lives)
 
-# main()
+
+main()
+
