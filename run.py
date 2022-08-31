@@ -1,4 +1,5 @@
 from random import randrange
+import os
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -37,6 +38,7 @@ def select_difficluty():
     difficulty = list(game_difficulty)[input_value]
     lives = list(game_difficulty.values())[input_value]
 
+    os.system('cls||clear')
     print("")
     print(f"You have selected game difficulty {difficulty} and will have {lives} lives.\n")
 
@@ -65,10 +67,12 @@ def select_category():
     category_column = category_input - 1
 
     if category_input <= len(categories_row):
+        os.system('cls||clear')
         print("")
-        print(f"You chose to guess something related to {categories_row[category_column]}.\n")
+        print(f"You have chosen to guess something related to {categories_row[category_column]}.\n")
     else:
         category_column = randrange((len(categories_row)))
+        os.system('cls||clear')
         print("")
         print(f"The random category selected for you is {categories_row[category_column]}.\n")
 
@@ -180,41 +184,61 @@ class Game:
         return self.lives
 
 
+def reset_game():
+    """
+    Requests if player wants to reset another game or quit
+    """
+    reset = input("Would you like to play again (y/n): ")
+    print("")
+
+    if reset == "y":
+        Game.alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        main()
+    else:
+        print("Thank you for playing Hangman. We hope you had fun!!! Come back soon.")
+
+
 def play_game(game_word, hidden_game_word, lives):
     """
     Main game play
     Checks whether game won, lost or to continue
     """
     game = Game("", game_word, hidden_game_word, lives)
-    print(game.alphabet)
-    letter_guess = input("Select a letter from the remaining in the letters above: ")
-    game.letter_guess = letter_guess
-
+    print(game.hidden_game_word)
     print("")
+
+    print(game.alphabet)
+    print("")
+
+    letter_guess = input("Select a letter from the remaining in the letters above: ")
+    print("")
+    game.letter_guess = letter_guess
 
     if game.check_game_word():
         game.change_hidden_letter()
         game.remove_letter_guess()
 
-        print(game.alphabet)
-        print(game.hidden_game_word)
-
         if game.hidden_game_word == game.game_word:
             print(f"Congratulations!!! You have guessed the correct answer which was {game.game_word}, with {game.lives} lives remaining.\n")
+            reset_game()
         else:
+            os.system('cls||clear')
             play_game(game.game_word, game.hidden_game_word, game.lives)
 
     else:
         game.remove_life()
         game.remove_letter_guess()
 
-        print(game.alphabet)
-        print(f"You have {game.lives} lives remaining.\n")
-
         if game.lives > 0:
+            os.system('cls||clear')
+            print(f"The letter '{game.letter_guess}' was not in the answer. You have {game.lives} lives remaining.\n")
             play_game(game.game_word, game.hidden_game_word, game.lives)
         else:
-            print(f"You have 0 lives remaining. The answer which you was guessing was {game.game_word}.\n")
+            os.system('cls||clear')
+            print(game.hidden_game_word)
+            print("")
+            print(f"The letter {game.letter_guess} was not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game.game_word}.\n")
+            reset_game()
 
 
 def main():
@@ -225,9 +249,6 @@ def main():
     column = select_category()
     game_word = retrieve_word(column)
     hidden_game_word = hide_game_word(game_word)
-    print(game_word)
-    print(hidden_game_word)
-    print(game_word + "\n")
     play_game(game_word, hidden_game_word, lives)
 
 
