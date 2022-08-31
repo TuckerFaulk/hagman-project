@@ -1,6 +1,6 @@
+from random import randrange
 import gspread
 from google.oauth2.service_account import Credentials
-from random import randrange
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -45,7 +45,8 @@ def select_difficluty():
 
 def select_category():
     """
-    Request for user to select the game category or for a random category to be chosen
+    Request for user to select the game category or for a random category to
+    be chosen
     """
     print("Please select one of the following categories, or choose 'Random' if you would like us to pick one for you.\n")
 
@@ -89,6 +90,31 @@ def retrieve_word(column):
     return game_word
 
 
+def hide_game_word(game_word):
+    """
+    Change the game word into dashes (-, letters) and slashes (/, spaces)
+    ready for the player to guess
+    """
+    game_word_split = list(game_word)
+
+    hide_word = []
+
+    for letter in game_word_split:
+        if letter == " ":
+            letter = "/"
+            hide_word.append(letter)
+        else:
+            letter = "-"
+            hide_word.append(letter)
+
+    hidden_game_word = ""
+
+    for letter in hide_word:
+        hidden_game_word += letter
+
+    return hidden_game_word
+
+
 def main():
     """
     Run all program functions
@@ -96,5 +122,7 @@ def main():
     # lives = select_difficluty()
     column = select_category()
     game_word = retrieve_word(column)
+    hide_game_word(game_word)
 
 main()
+
