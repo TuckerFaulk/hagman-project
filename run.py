@@ -34,18 +34,25 @@ def select_difficluty():
     Request for user to select game difficulty: Hard (5 Lives),
     Medium (6 Lives), Easy (7 Lives)
     """
-    print("Please select your game difficulty.\n")
+    while True:
+        print("Please select your game difficulty.\n")
 
-    game_difficulty = {"Hard": 5, "Medium": 6, "Easy": 7}
+        game_difficulty = {"Hard": 5, "Medium": 6, "Easy": 7}
 
-    num = 1
+        num = 1
 
-    for difficulty, lives in game_difficulty.items():
-        print(f"{num} - {difficulty} ({lives} Lives)")
-        num += 1
+        for difficulty, lives in game_difficulty.items():
+            print(f"{num} - {difficulty} ({lives} Lives)")
+            num += 1
 
-    print("")
-    input_value = int(input("Which difficulty would you like to select (1-3)? "))
+        print("")
+        input_value = input("Which difficulty would you like to select (1-3)? ")
+
+        if validate_data(input_value, 3):
+            break
+
+    input_value = int(input_value)
+
     input_value -= 1
 
     difficulty = list(game_difficulty)[input_value]
@@ -79,7 +86,7 @@ def select_category():
         num_of_categories = len(categories_row) + 1
 
         category_input = input(f"Which category number would you like to select (1-{num_of_categories})? ")
-        
+
         if validate_data(category_input, num_of_categories):
             break
 
