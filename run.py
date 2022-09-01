@@ -1,4 +1,6 @@
 from random import randrange
+from pyfiglet import Figlet
+from termcolor import colored
 import os
 import gspread
 from google.oauth2.service_account import Credentials
@@ -15,6 +17,16 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("hangman_categories")
 CATEGORIES = SHEET.worksheet("categories")
 
+def game_title():
+    """
+    Clears the console and displays the game title
+    """
+    os.system('cls||clear')
+    f = Figlet(font='banner3-D')
+    title = f.renderText("Hangman") + "Created by Thomas Faulkner | Code Institute Python Project\n"
+
+    colored_title = colored(title, color="white", on_color="on_blue")
+    print(colored_title)
 
 def select_difficluty():
     """
@@ -38,8 +50,7 @@ def select_difficluty():
     difficulty = list(game_difficulty)[input_value]
     lives = list(game_difficulty.values())[input_value]
 
-    os.system('cls||clear')
-    print("")
+    game_title()
     print(f"You have selected game difficulty {difficulty} and will have {lives} lives.\n")
 
     return lives
@@ -69,13 +80,11 @@ def select_category():
     category_column = category_input - 1
 
     if category_input <= len(categories_row):
-        os.system('cls||clear')
-        print("")
+        game_title()
         print(f"You have chosen to guess something related to {categories_row[category_column]}.\n")
     else:
         category_column = randrange((len(categories_row)))
-        os.system('cls||clear')
-        print("")
+        game_title()
         print(f"The random category selected for you is {categories_row[category_column]}.\n")
 
     category_column += 1
@@ -241,7 +250,7 @@ def play_game(game_word, hidden_game_word, lives):
         game.remove_letter_guess()
 
         if game.hidden_game_word.lower() == game.game_word:
-            os.system('cls||clear')
+            game_title()
 
             game_word = display_game_word(game.game_word)
             print(f"Congratulations!!! You have guessed the correct answer which was {game_word}, with {game.lives} lives remaining.\n")
@@ -254,7 +263,7 @@ def play_game(game_word, hidden_game_word, lives):
 
             reset_game()
         else:
-            os.system('cls||clear')
+            game_title()
             play_game(game.game_word, game.hidden_game_word, game.lives)
 
     else:
@@ -262,11 +271,11 @@ def play_game(game_word, hidden_game_word, lives):
         game.remove_letter_guess()
 
         if game.lives > 0:
-            os.system('cls||clear')
+            game_title()
             print(f"The letter '{game.letter_guess}' was not in the answer. You have {game.lives} lives remaining.\n")
             play_game(game.game_word, game.hidden_game_word, game.lives)
         else:
-            os.system('cls||clear')
+            game_title()
 
             game_word = display_game_word(game.game_word)
             print(f"The letter '{game.letter_guess}' was not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
@@ -284,6 +293,7 @@ def main():
     """
     Run all program functions
     """
+    game_title()
     lives = select_difficluty()
     column = select_category()
     game_word = retrieve_word(column)
