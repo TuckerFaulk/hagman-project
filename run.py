@@ -23,9 +23,9 @@ def game_title():
     Clears the console and displays the game title
     """
     os.system('cls||clear')
-    f = Figlet(font='banner3-D')
-    title = f.renderText("Hangman") + "Created by Thomas Faulkner | Code Institute Python Project\n"
-    colored_title = colored(title, color="white", on_color="on_blue")
+    f = Figlet(font='big')
+    title = f.renderText("HANGMAN") + "Created by Thomas Faulkner | Code Institute Python Project\n"
+    colored_title = colored(title, on_color="on_blue")
     print(colored_title)
 
 
@@ -86,13 +86,13 @@ def select_category():
     category_input = int(category_input)
 
     category_column = category_input - 1
-    category = categories_row[category_column]
 
     if category_input <= len(categories_row):
         game_title()
         print(f"You have chosen to guess something related to:\n")
     else:
         category_column = randrange((len(categories_row)))
+        category = categories_row[category_column]
         game_title()
         print(f"The random category selected for you is {category}.\n")
 
@@ -285,7 +285,7 @@ def play_game(game_word, hidden_game_word, lives, category):
 
     letter_guess = input("Select a letter from the remaining in the letters above: ")
     print("")
-    game.letter_guess = letter_guess
+    game.letter_guess = letter_guess.lower()
 
     if game.check_game_word():
         game.change_hidden_letter()
@@ -302,7 +302,7 @@ def play_game(game_word, hidden_game_word, lives, category):
 
             print(game.hidden_game_word)
             print("")
-            
+
             print(f"Remaining letters: {display_alphabet.upper()}")
             print("")
 
@@ -331,7 +331,7 @@ def play_game(game_word, hidden_game_word, lives, category):
             print(game.hidden_game_word)
             print("")
 
-            print(f"Remaining letters: {display_alphabet.upper()}")
+            print(f"Remaining letters: {display_alphabet.upper()}") # remove spaces
             print("")
 
             reset_game()
