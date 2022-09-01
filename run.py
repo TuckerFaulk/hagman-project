@@ -17,6 +17,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("hangman_categories")
 CATEGORIES = SHEET.worksheet("categories")
 
+
 def game_title():
     """
     Clears the console and displays the game title
@@ -24,9 +25,9 @@ def game_title():
     os.system('cls||clear')
     f = Figlet(font='banner3-D')
     title = f.renderText("Hangman") + "Created by Thomas Faulkner | Code Institute Python Project\n"
-
     colored_title = colored(title, color="white", on_color="on_blue")
     print(colored_title)
+
 
 def select_difficluty():
     """
@@ -78,18 +79,19 @@ def select_category():
 
     category_input = int(input(f"Which category number would you like to select (1-{num_of_categories})? "))
     category_column = category_input - 1
+    category = categories_row[category_column]
 
     if category_input <= len(categories_row):
         game_title()
-        print(f"You have chosen to guess something related to {categories_row[category_column]}.\n")
+        print(f"You have chosen to guess something related to {category}.\n")
     else:
         category_column = randrange((len(categories_row)))
         game_title()
-        print(f"The random category selected for you is {categories_row[category_column]}.\n")
+        print(f"The random category selected for you is {category}.\n")
 
     category_column += 1
 
-    return category_column
+    return category_column, category
 
 
 def retrieve_word(column):
@@ -100,7 +102,6 @@ def retrieve_word(column):
     column_values.pop(0)
     rand_column_cell = randrange((len(column_values)))
     game_word = column_values[rand_column_cell]
-    # game_word.upper()
 
     final_game_word = []
 
@@ -112,6 +113,7 @@ def retrieve_word(column):
             final_game_word.append(letter)
 
     game_word = ''.join(final_game_word)
+
     return game_word
 
 
@@ -147,11 +149,12 @@ class Game:
     # alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-    def __init__(self, letter_guess, game_word, hidden_game_word, lives):
+    def __init__(self, letter_guess, game_word, hidden_game_word, lives, category):
         self.letter_guess = letter_guess
         self.game_word = game_word
         self.hidden_game_word = hidden_game_word
         self.lives = lives
+        self.category = category
 
     def check_game_word(self):
         """
@@ -228,12 +231,15 @@ def display_game_word(game_word):
     return display_word
 
 
-def play_game(game_word, hidden_game_word, lives):
+def play_game(game_word, hidden_game_word, lives, category):
     """
     Main game play
     Checks whether game won, lost or to continue
     """
-    game = Game("", game_word, hidden_game_word, lives)
+    game = Game("", game_word, hidden_game_word, lives, category)
+    print(game.category)
+    print("")
+    
     print(game.hidden_game_word)
     print("")
 
@@ -264,7 +270,7 @@ def play_game(game_word, hidden_game_word, lives):
             reset_game()
         else:
             game_title()
-            play_game(game.game_word, game.hidden_game_word, game.lives)
+            play_game(game.game_word, game.hidden_game_word, game.lives, game.category)
 
     else:
         game.remove_life()
@@ -273,7 +279,7 @@ def play_game(game_word, hidden_game_word, lives):
         if game.lives > 0:
             game_title()
             print(f"The letter '{game.letter_guess}' was not in the answer. You have {game.lives} lives remaining.\n")
-            play_game(game.game_word, game.hidden_game_word, game.lives)
+            play_game(game.game_word, game.hidden_game_word, game.lives, game.category)
         else:
             game_title()
 
@@ -295,10 +301,10 @@ def main():
     """
     game_title()
     lives = select_difficluty()
-    column = select_category()
+    column, category = select_category()
     game_word = retrieve_word(column)
     hidden_game_word = hide_game_word(game_word)
-    play_game(game_word, hidden_game_word, lives)
+    play_game(game_word, hidden_game_word, lives, category)
 
 
 main()
