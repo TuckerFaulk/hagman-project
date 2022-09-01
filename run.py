@@ -1,7 +1,7 @@
 from random import randrange
+import os
 from pyfiglet import Figlet
 from termcolor import colored
-import os
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -62,28 +62,35 @@ def select_category():
     Request for user to select the game category or for a random category to
     be chosen
     """
-    print("Please select one of the following categories, or choose 'Random' if you would like us to pick one for you.\n")
+    while True:
+        print("Please select one of the following categories, or choose 'Random' if you would like us to pick one for you.\n")
 
-    data = CATEGORIES.get_all_values()
-    categories_row = data[0]
+        data = CATEGORIES.get_all_values()
+        categories_row = data[0]
 
-    num = 1
+        num = 1
 
-    for category in categories_row:
-        print(f"{num} - {category}")
-        num += 1
+        for category in categories_row:
+            print(f"{num} - {category}")
+            num += 1
 
-    print(f"{num} - Random\n")
+        print(f"{num} - Random\n")
 
-    num_of_categories = len(categories_row) + 1
+        num_of_categories = len(categories_row) + 1
 
-    category_input = int(input(f"Which category number would you like to select (1-{num_of_categories})? "))
+        category_input = input(f"Which category number would you like to select (1-{num_of_categories})? ")
+        
+        if validate_data(category_input, num_of_categories):
+            break
+
+    category_input = int(category_input)
+
     category_column = category_input - 1
     category = categories_row[category_column]
 
     if category_input <= len(categories_row):
         game_title()
-        print(f"You have chosen to guess something related to {category}.\n")
+        print(f"You have chosen to guess something related to:\n")
     else:
         category_column = randrange((len(categories_row)))
         game_title()
@@ -92,6 +99,34 @@ def select_category():
     category_column += 1
 
     return category_column, category
+
+
+def validate_data(value, num_of_options):
+    """
+    Inside the try checks whether an interger
+    within the number of options has been input.
+    Raises ValueError or IndexError if not met.
+    """
+
+    try:
+        int(value)
+
+        if int(value) > num_of_options:
+            raise IndexError(
+                f"Please enter a value between 1-{num_of_options}. You entered {value}"
+            )
+
+    except ValueError as e:
+        game_title()
+        print(f"ValueError: {e}. Please enter a value between 1-{num_of_options}.\n")
+        return False
+
+    except IndexError as e:
+        game_title()
+        print(f"IndexError: {e}.\n")
+        return False
+    
+    return True
 
 
 def retrieve_word(column):
@@ -209,6 +244,7 @@ def reset_game():
         Game.alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         main()
     else:
+        game_title()
         print("Thank you for playing Hangman. We hope you had fun!!! Come back soon.\n")
 
 
@@ -239,7 +275,7 @@ def play_game(game_word, hidden_game_word, lives, category):
     game = Game("", game_word, hidden_game_word, lives, category)
     print(game.category)
     print("")
-    
+
     print(game.hidden_game_word)
     print("")
 
@@ -260,6 +296,9 @@ def play_game(game_word, hidden_game_word, lives, category):
 
             game_word = display_game_word(game.game_word)
             print(f"Congratulations!!! You have guessed the correct answer which was {game_word}, with {game.lives} lives remaining.\n")
+
+            print(game.category)
+            print("")
 
             print(game.hidden_game_word)
             print("")
@@ -285,13 +324,16 @@ def play_game(game_word, hidden_game_word, lives, category):
 
             game_word = display_game_word(game.game_word)
             print(f"The letter '{game.letter_guess}' was not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
-            
+
+            print(game.category)
+            print("")
+
             print(game.hidden_game_word)
             print("")
 
             print(f"Remaining letters: {display_alphabet.upper()}")
             print("")
-            
+
             reset_game()
 
 
@@ -309,3 +351,9 @@ def main():
 
 main()
 
+# type_value = 0
+
+# if type(type_value) == int:
+#     print(type_value)
+# else:
+#     print("error")
