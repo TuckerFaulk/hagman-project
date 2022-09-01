@@ -96,6 +96,7 @@ def select_category():
 
     if category_input <= len(categories_row):
         game_title()
+        category = categories_row[category_column]
         print(f"You have chosen to guess something related to:\n")
     else:
         category_column = randrange((len(categories_row)))
@@ -110,9 +111,9 @@ def select_category():
 
 def validate_data(value, num_of_options):
     """
-    Inside the try checks whether an interger
-    within the number of options has been input.
-    Raises ValueError or IndexError if not met.
+    Inside the try checks whether an interger has been entered and
+    whether it is within the range of the number of options.
+    Raises ValueError or IndexError as appropriate.
     """
 
     try:
@@ -120,7 +121,7 @@ def validate_data(value, num_of_options):
 
         if int(value) > num_of_options:
             raise IndexError(
-                f"Please enter a value between 1-{num_of_options}. You entered {value}"
+                f"Please enter a value between 1-{num_of_options}. You entered '{value}'"
             )
 
     except ValueError as e:
@@ -132,7 +133,7 @@ def validate_data(value, num_of_options):
         game_title()
         print(f"IndexError: {e}.\n")
         return False
-    
+
     return True
 
 
@@ -188,7 +189,6 @@ class Game:
     Main game play class
     """
     # Class variable
-    # alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
     def __init__(self, letter_guess, game_word, hidden_game_word, lives, category):
@@ -279,18 +279,23 @@ def play_game(game_word, hidden_game_word, lives, category):
     Main game play
     Checks whether game won, lost or to continue
     """
-    game = Game("", game_word, hidden_game_word, lives, category)
-    print(game.category)
-    print("")
+    while True:
+        game = Game("", game_word, hidden_game_word, lives, category)
+        print(game.category)
+        print("")
 
-    print(game.hidden_game_word)
-    print("")
+        print(game.hidden_game_word)
+        print("")
 
-    display_alphabet = ''.join(game.alphabet)
-    print(f"Remaining letters: {display_alphabet.upper()}")
-    print("")
+        display_alphabet = ''.join(game.alphabet)
+        print(f"Remaining letters: {display_alphabet.upper()}")
+        print("")
 
-    letter_guess = input("Select a letter from the remaining in the letters above: ")
+        letter_guess = input("Select a letter from the remaining in the letters above: ")
+
+        if validate_letter(letter_guess, game.alphabet):
+            break
+
     print("")
     game.letter_guess = letter_guess.lower()
 
@@ -344,6 +349,29 @@ def play_game(game_word, hidden_game_word, lives, category):
             reset_game()
 
 
+def validate_letter(letter_guess, remaining_letters):
+    """
+    Inside the try checks whether an string has been entered and
+    whether it is within the list of remaining letters to guess.
+    Raises ValueError as appropriate.
+    """
+
+    try:
+        str(letter_guess)
+
+        if letter_guess not in remaining_letters:
+            raise ValueError(
+                f"You entered '{letter_guess}'"
+            )
+
+    except ValueError as e:
+        game_title()
+        print(f"ValueError: {e}. Please enter one of the remaining letters (shown below).\n")
+        return False
+
+    return True
+
+
 def main():
     """
     Run all program functions
@@ -358,9 +386,3 @@ def main():
 
 main()
 
-# type_value = 0
-
-# if type(type_value) == int:
-#     print(type_value)
-# else:
-#     print("error")
