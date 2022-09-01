@@ -32,7 +32,7 @@ def select_difficluty():
         num += 1
 
     print("")
-    input_value = int(input("Which difficulty would you like to select? "))
+    input_value = int(input("Which difficulty would you like to select (1-3)? "))
     input_value -= 1
 
     difficulty = list(game_difficulty)[input_value]
@@ -63,7 +63,9 @@ def select_category():
 
     print(f"{num} - Random\n")
 
-    category_input = int(input("Which category number would you like to select? "))
+    num_of_categories = len(categories_row) + 1
+
+    category_input = int(input(f"Which category number would you like to select (1-{num_of_categories})? "))
     category_column = category_input - 1
 
     if category_input <= len(categories_row):
@@ -161,7 +163,7 @@ class Game:
         for letter in self.game_word:
 
             if letter == self.letter_guess:
-                hidden_word_list[list_index] = self.letter_guess
+                hidden_word_list[list_index] = self.letter_guess.upper()
 
             list_index += 1
 
@@ -195,7 +197,26 @@ def reset_game():
         Game.alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         main()
     else:
-        print("Thank you for playing Hangman. We hope you had fun!!! Come back soon.")
+        print("Thank you for playing Hangman. We hope you had fun!!! Come back soon.\n")
+
+
+def display_game_word(game_word):
+    """
+    Changes the "/" in the game word to spaces, and capitalizes each word
+    """
+    game_word = game_word.title()
+
+    display_word = []
+
+    for letter in game_word:
+        if letter == "/":
+            display_word.append(" ")
+        else:
+            display_word.append(letter)
+
+    display_word = ''.join(display_word)
+
+    return display_word
 
 
 def play_game(game_word, hidden_game_word, lives):
@@ -207,7 +228,8 @@ def play_game(game_word, hidden_game_word, lives):
     print(game.hidden_game_word)
     print("")
 
-    print(game.alphabet)
+    display_alphabet = ''.join(game.alphabet)
+    print(f"Remaining letters: {display_alphabet.upper()}")
     print("")
 
     letter_guess = input("Select a letter from the remaining in the letters above: ")
@@ -218,8 +240,18 @@ def play_game(game_word, hidden_game_word, lives):
         game.change_hidden_letter()
         game.remove_letter_guess()
 
-        if game.hidden_game_word == game.game_word:
-            print(f"Congratulations!!! You have guessed the correct answer which was {game.game_word}, with {game.lives} lives remaining.\n")
+        if game.hidden_game_word.lower() == game.game_word:
+            os.system('cls||clear')
+
+            game_word = display_game_word(game.game_word)
+            print(f"Congratulations!!! You have guessed the correct answer which was {game_word}, with {game.lives} lives remaining.\n")
+
+            print(game.hidden_game_word)
+            print("")
+            
+            print(f"Remaining letters: {display_alphabet.upper()}")
+            print("")
+
             reset_game()
         else:
             os.system('cls||clear')
@@ -235,9 +267,16 @@ def play_game(game_word, hidden_game_word, lives):
             play_game(game.game_word, game.hidden_game_word, game.lives)
         else:
             os.system('cls||clear')
+
+            game_word = display_game_word(game.game_word)
+            print(f"The letter '{game.letter_guess}' was not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
+            
             print(game.hidden_game_word)
             print("")
-            print(f"The letter {game.letter_guess} was not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game.game_word}.\n")
+
+            print(f"Remaining letters: {display_alphabet.upper()}")
+            print("")
+            
             reset_game()
 
 
