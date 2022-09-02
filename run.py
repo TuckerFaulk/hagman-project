@@ -245,7 +245,6 @@ def reset_game():
     Requests if player wants to reset another game or quit
     """
     reset = input("Would you like to play again (y/n): ")
-    print("")
 
     if reset == "y":
         Game.alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -257,7 +256,7 @@ def reset_game():
 
 def display_game_word(game_word):
     """
-    Changes the "/" in the game word to spaces, and capitalizes each word
+    Changes the "/" in the game word to spaces, and capitalizes each the first letter of each word
     """
     game_word = game_word.title()
 
@@ -274,6 +273,24 @@ def display_game_word(game_word):
     return display_word
 
 
+def game_won(game_word, lives, category, hidden_game_word, alphabet):
+    """
+    
+    """
+    game_title()
+
+    game_word = display_game_word(game_word)
+    print(f"Congratulations!!! You have guessed the correct answer which was {game_word}, with {lives} lives remaining.\n")
+
+    print(f"{category}\n")
+    print(f"{hidden_game_word}\n")
+
+    display_alphabet = ''.join(alphabet)
+    print(f"Remaining letters: {display_alphabet.upper()}\n")
+
+    reset_game()
+
+
 def play_game(game_word, hidden_game_word, lives, category):
     """
     Main game play
@@ -281,19 +298,35 @@ def play_game(game_word, hidden_game_word, lives, category):
     """
     while True:
         game = Game("", game_word, hidden_game_word, lives, category)
-        print(game.category)
-        print("")
 
-        print(game.hidden_game_word)
-        print("")
+        print(f"{game.category}\n")
+        print(f"{game.hidden_game_word}\n")
 
         display_alphabet = ''.join(game.alphabet)
-        print(f"Remaining letters: {display_alphabet.upper()}")
-        print("")
+        print(f"Remaining letters: {display_alphabet.upper()}\n")
 
         letter_guess = input("Select a letter from the remaining in the letters above: ")
 
-        if validate_letter(letter_guess, game.alphabet):
+        if len(letter_guess) > 3:
+            if letter_guess.title() == display_game_word(game.game_word):
+                game_won(game.game_word, game.lives, game.category, game.hidden_game_word, game.alphabet)
+
+            game.remove_life()
+
+            if game.lives > 0:
+                game_title()
+                print(f"You guessed that the answer is'{letter_guess}' which is incorrect. You have {game.lives} lives remaining.\n")
+                play_game(game.game_word, game.hidden_game_word, game.lives, game.category)
+            else:
+                game_title()
+                game_word = display_game_word(game.game_word)
+                print(f"You guessed that the answer is'{letter_guess}' which is incorrect. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
+                print(f"{game.category}\n")
+                print(f"{game.hidden_game_word}")
+                print(f"Remaining letters: {display_alphabet.upper()}\n")
+                reset_game()
+
+        elif validate_letter(letter_guess, game.alphabet):
             break
 
     print("")
@@ -304,21 +337,7 @@ def play_game(game_word, hidden_game_word, lives, category):
         game.remove_letter_guess()
 
         if game.hidden_game_word.lower() == game.game_word:
-            game_title()
-
-            game_word = display_game_word(game.game_word)
-            print(f"Congratulations!!! You have guessed the correct answer which was {game_word}, with {game.lives} lives remaining.\n")
-
-            print(game.category)
-            print("")
-
-            print(game.hidden_game_word)
-            print("")
-
-            print(f"Remaining letters: {display_alphabet.upper()}")
-            print("")
-
-            reset_game()
+            game_won(game.game_word, game.lives, game.category, game.hidden_game_word, game.alphabet)
         else:
             game_title()
             play_game(game.game_word, game.hidden_game_word, game.lives, game.category)
@@ -329,22 +348,17 @@ def play_game(game_word, hidden_game_word, lives, category):
 
         if game.lives > 0:
             game_title()
-            print(f"The letter '{game.letter_guess}' was not in the answer. You have {game.lives} lives remaining.\n")
+            print(f"The letter '{game.letter_guess}' is not in the answer. You have {game.lives} lives remaining.\n")
             play_game(game.game_word, game.hidden_game_word, game.lives, game.category)
         else:
             game_title()
 
             game_word = display_game_word(game.game_word)
-            print(f"The letter '{game.letter_guess}' was not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
+            print(f"The letter '{game.letter_guess}' is not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
 
-            print(game.category)
-            print("")
-
-            print(game.hidden_game_word)
-            print("")
-
-            print(f"Remaining letters: {display_alphabet.upper()}") # remove spaces
-            print("")
+            print(f"{game.category}\n")
+            print(f"{game.hidden_game_word}")
+            print(f"Remaining letters: {display_alphabet.upper()}\n")
 
             reset_game()
 
