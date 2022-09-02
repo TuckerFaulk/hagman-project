@@ -1,4 +1,5 @@
 from random import randrange
+from hangman import display_hangman
 import os
 from pyfiglet import Figlet
 from termcolor import colored
@@ -61,7 +62,7 @@ def select_difficluty():
     game_title()
     print(f"You have selected game difficulty {difficulty} and will have {lives} lives.\n")
 
-    return lives
+    return difficulty, lives
 
 
 def select_category():
@@ -283,15 +284,15 @@ def game_won(game_word, lives, category, hidden_game_word, alphabet):
     print(f"Congratulations!!! You have guessed the correct answer which was {game_word}, with {lives} lives remaining.\n")
 
     print(f"{category}\n")
-    print(f"{hidden_game_word}\n")
-
+    print(f"{hidden_game_word}")
+    # Add Hangman
     display_alphabet = ''.join(alphabet)
     print(f"Remaining letters: {display_alphabet.upper()}\n")
 
     reset_game()
 
 
-def play_game(game_word, hidden_game_word, lives, category):
+def play_game(game_word, hidden_game_word, lives, category, difficulty):
     """
     Main game play
     Checks whether game won, lost or to continue
@@ -300,7 +301,10 @@ def play_game(game_word, hidden_game_word, lives, category):
         game = Game("", game_word, hidden_game_word, lives, category)
 
         print(f"{game.category}\n")
-        print(f"{game.hidden_game_word}\n")
+        print(f"{game.hidden_game_word}")
+
+        hang = display_hangman(difficulty, game.lives)
+        print(hang)
 
         display_alphabet = ''.join(game.alphabet)
         print(f"Remaining letters: {display_alphabet.upper()}\n")
@@ -321,13 +325,14 @@ def play_game(game_word, hidden_game_word, lives, category):
             if game.lives > 0:
                 game_title()
                 print(f"You guessed that the answer is '{letter_guess}' which is incorrect. You have {game.lives} lives remaining.\n")
-                play_game(game.game_word, game.hidden_game_word, game.lives, game.category)
+                play_game(game.game_word, game.hidden_game_word, game.lives, game.category, difficulty)
             else:
                 game_title()
                 game_word = display_game_word(game.game_word)
                 print(f"You guessed that the answer is '{letter_guess}' which is incorrect. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
                 print(f"{game.category}\n")
                 print(f"{game.hidden_game_word}")
+                # Add Hangman
                 print(f"Remaining letters: {display_alphabet.upper()}\n")
                 reset_game()
 
@@ -343,17 +348,17 @@ def play_game(game_word, hidden_game_word, lives, category):
 
         if game.hidden_game_word.lower() == game.game_word:
             game_won(game.game_word, game.lives, game.category, game.hidden_game_word, game.alphabet)
-        else:
+        else: ## What does this do?
             game_title()
-            play_game(game.game_word, game.hidden_game_word, game.lives, game.category)
-    else: ## now breaking here
+            play_game(game.game_word, game.hidden_game_word, game.lives, game.category, difficulty)
+    else:
         game.remove_life()
         game.remove_letter_guess()
 
         if game.lives > 0:
             game_title()
             print(f"The letter '{game.letter_guess}' is not in the answer. You have {game.lives} lives remaining.\n")
-            play_game(game.game_word, game.hidden_game_word, game.lives, game.category)
+            play_game(game.game_word, game.hidden_game_word, game.lives, game.category, difficulty)
         else:
             game_title()
 
@@ -361,7 +366,11 @@ def play_game(game_word, hidden_game_word, lives, category):
             print(f"The letter '{game.letter_guess}' is not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
 
             print(f"{game.category}\n")
-            print(f"{game.hidden_game_word}\n")
+            print(f"{game.hidden_game_word}")
+
+            hang = display_hangman(difficulty, game.lives)
+            print(hang)
+
             print(f"Remaining letters: {display_alphabet.upper()}\n")
 
             reset_game()
@@ -395,11 +404,11 @@ def main():
     Run all program functions
     """
     game_title()
-    lives = select_difficluty()
+    difficulty, lives = select_difficluty()
     column, category = select_category()
     game_word = retrieve_word(column)
     hidden_game_word = hide_game_word(game_word)
-    play_game(game_word, hidden_game_word, lives, category)
+    play_game(game_word, hidden_game_word, lives, category, difficulty)
 
 
 main()
