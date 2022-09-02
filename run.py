@@ -334,7 +334,7 @@ def play_game(game_word, hidden_game_word, lives, category):
         elif validate_letter(letter_guess, game.alphabet):
             break
 
-    print("") # Poosibly Delete
+    # print("") # Poosibly Delete
     game.letter_guess = letter_guess.lower()
 
     if game.check_game_word():
