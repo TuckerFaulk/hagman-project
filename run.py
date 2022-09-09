@@ -1,7 +1,7 @@
 from random import randrange
 from hangman import display_hangman
 import os
-from pyfiglet import Figlet
+# from pyfiglet import Figlet
 from termcolor import colored
 import gspread
 from google.oauth2.service_account import Credentials
@@ -24,10 +24,20 @@ def game_title():
     Clears the console and displays the game title
     """
     os.system('cls||clear')
-    f = Figlet(font='big')
-    title = f.renderText("HANGMAN") + "Created by Thomas Faulkner | Code Institute Python Project\n"
+    # f = Figlet(font='big')
+    title = """
+ _    _          _   _  _____ __  __          _   _ 
+| |  | |   /\   | \ | |/ ____|  \/  |   /\   | \ | |
+| |__| |  /  \  |  \| | |  __| \  / |  /  \  |  \| |
+|  __  | / /\ \ | . ` | | |_ | |\/| | / /\ \ | . ` |
+| |  | |/ ____ \| |\  | |__| | |  | |/ ____ \| |\  |
+|_|  |_/_/    \_\_| \_|\_____|_|  |_/_/    \_\_| \_|"""
+    # title = f.renderText("HANGMAN") + "Created by Thomas Faulkner | Code Institute Python Project\n"
+    subtitle = "Created by Thomas Faulkner | Code Institute Python Project\n"
     colored_title = colored(title, on_color="on_blue")
+    colored_subtitle = colored(subtitle, on_color="on_blue")
     print(colored_title)
+    print(colored_subtitle)
 
 
 def select_difficluty():
@@ -350,7 +360,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
 
         if game.hidden_game_word.lower() == game.game_word:
             game_won(game.game_word, game.lives, game.category, game.hidden_game_word, game.alphabet, hangman)
-        else: ## What does this do?
+        else:
             game_title()
             play_game(game.game_word, game.hidden_game_word, game.lives, game.category, difficulty)
     else:
