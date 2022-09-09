@@ -1,10 +1,10 @@
 from random import randrange
-from hangman import display_hangman
 import os
-from pyfiglet import Figlet
+# from pyfiglet import Figlet
 from termcolor import colored
 import gspread
 from google.oauth2.service_account import Credentials
+from hangman import display_hangman
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -24,8 +24,8 @@ def game_title():
     Clears the console and displays the game title
     """
     os.system('cls||clear')
-    f = Figlet(font='big')
-    title = f.renderText("HANGMAN") + "Created by Thomas Faulkner | Code Institute Python Project\n"
+    # f = Figlet(font='big') f.renderText("HANGMAN") + 
+    title = "Hangman | Created by Thomas Faulkner | Code Institute Python Project\n"
     colored_title = colored(title, on_color="on_blue")
     print(colored_title)
 
@@ -98,7 +98,7 @@ def select_category():
     if category_input <= len(categories_row):
         game_title()
         category = categories_row[category_column]
-        print(f"You have chosen to guess something related to:\n")
+        print("You have chosen to guess something related to:\n")
     else:
         category_column = randrange((len(categories_row)))
         category = categories_row[category_column]
@@ -278,7 +278,7 @@ def display_game_word(game_word):
 
 def game_won(game_word, lives, category, hidden_game_word, alphabet, hangman):
     """
-    
+
     """
     game_title()
 
@@ -313,7 +313,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
 
         letter_guess = input("Select a letter from the remaining in the letters above:\n")
 
-        # Guess Game Word Feature: if a string more than 3 letters is input, 
+        # Guess Game Word Feature: if a string more than 3 letters is input,
         # the following treats it as a guess and checks if it is equal to the game word.
         # Removes a life if the guess is incorrect
 
