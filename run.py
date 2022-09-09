@@ -1,6 +1,6 @@
 from random import randrange
 import os
-# from pyfiglet import Figlet
+from pyfiglet import Figlet
 from termcolor import colored
 import gspread
 from google.oauth2.service_account import Credentials
@@ -24,8 +24,9 @@ def game_title():
     Clears the console and displays the game title
     """
     os.system('cls||clear')
-    # f = Figlet(font='big') f.renderText("HANGMAN") + 
-    title = "Hangman | Created by Thomas Faulkner | Code Institute Python Project\n"
+    f = Figlet(font='big')
+    title = f.renderText("HANGMAN")
+    title += "Created by Thomas Faulkner | Code Institute Python Project\n"
     colored_title = colored(title, on_color="on_blue")
     print(colored_title)
 
