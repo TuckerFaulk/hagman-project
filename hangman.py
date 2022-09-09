@@ -30,6 +30,8 @@ _________
 |        |
 |
 |___________
+
+1 Lives Remaining
             """
         elif lives == 2:
             hangman = """
@@ -40,6 +42,8 @@ _________
 |        |
 |
 |___________
+
+2 Lives Remaining
         """
         elif lives == 3:
             hangman = """
@@ -50,6 +54,8 @@ _________
 |
 |
 |___________
+
+3 Lives Remaining
         """
         elif lives == 4:
             hangman = """
@@ -60,6 +66,8 @@ _________
 |
 |
 |___________
+
+4 Lives Remaining
         """
         elif lives == 5:
             hangman = """
@@ -70,6 +78,8 @@ _________
 |
 |
 |___________
+
+5 Lives Remaining
         """
         elif lives == 6:
             hangman = """
@@ -80,6 +90,8 @@ _________
 |
 |
 |___________
+
+6 Lives Remaining
         """
         else:
             hangman = " "
@@ -105,6 +117,8 @@ _________
 |        |
 |
 |___________
+
+1 Lives Remaining
         """
         elif lives == 2:
             hangman = """
@@ -115,6 +129,8 @@ _________
 |
 |
 |___________
+
+2 Lives Remaining
         """
         elif lives == 3:
             hangman = """
@@ -125,6 +141,8 @@ _________
 |
 |
 |___________
+
+3 Lives Remaining
         """
         elif lives == 4:
             hangman = """
@@ -135,6 +153,8 @@ _________
 |
 |
 |___________
+
+4 Lives Remaining
         """
         elif lives == 5:
             hangman = """
@@ -145,6 +165,8 @@ _________
 |
 |
 |___________
+
+5 Lives Remaining
         """
         else:
             hangman = " "
@@ -170,6 +192,8 @@ _________
 |        |
 |
 |___________
+
+1 Life Remaining
         """
         elif lives == 2:
             hangman = """
@@ -180,6 +204,8 @@ _________
 |
 |
 |___________
+
+2 Lives Remaining
         """
         elif lives == 3:
             hangman = """
@@ -190,16 +216,20 @@ _________
 |
 |
 |___________
+
+3 Lives Remaining
         """
         elif lives == 4:
             hangman = """
 
-    |/
-    |
-    |
-    |
-    |
-    |___________
+|/
+|
+|
+|
+|
+|___________
+
+4 Lives Remaining
         """
         else:
             hangman = " "
