@@ -358,7 +358,6 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
         game.remove_letter_guess()
 
         if game.lives > 0:
-            os.system('cls||clear')
             game_title()
             print(f"The letter '{game.letter_guess}' is not in the answer. You have {game.lives} lives remaining.\n")
             play_game(game.game_word, game.hidden_game_word, game.lives, game.category, difficulty)
