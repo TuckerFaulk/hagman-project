@@ -353,7 +353,14 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
             else:
                 os.system('cls||clear')
                 game_word = display_game_word(game.game_word)
+
+                f = Figlet(font='big')
+                title = f.renderText("UNLUCKY!!!")
+                colored_title = colored(title, on_color="on_blue")
+
+                print(colored_title)
                 print(f"You guessed that the answer is '{letter_guess}' which is incorrect. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
+
                 print(f"{game.category}\n")
                 print(game.hidden_game_word)
                 hangman = display_hangman(difficulty, game.lives)
@@ -387,6 +394,12 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
             os.system('cls||clear')
 
             game_word = display_game_word(game.game_word)
+
+            f = Figlet(font='big')
+            title = f.renderText("UNLUCKY!!!")
+            colored_title = colored(title, on_color="on_blue")
+
+            print(colored_title)
             print(f"The letter '{game.letter_guess}' is not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
 
             print(f"{game.category}\n")
@@ -406,7 +419,7 @@ def validate_letter(letter_guess, remaining_letters):
     whether it is within the list of remaining letters to guess.
     Raises ValueError as appropriate.
     """
-
+    letter_guess = letter_guess.lower()
     try:
         str(letter_guess)
 
