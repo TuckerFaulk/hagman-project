@@ -144,12 +144,14 @@ def validate_data(value, num_of_options):
 
     except ValueError as e:
         os.system('cls||clear')
-        print(f"ValueError: {e}. Please enter a value between 1-{num_of_options}.\n")
+        error_message = colored(f"ValueError: Please enter a value between 1-{num_of_options}. You entered '{value}'.\n", on_color="on_red")
+        print(error_message)
         return False
 
     except IndexError as e:
         os.system('cls||clear')
-        print(f"IndexError: {e}.\n")
+        error_message = colored(f"IndexError: {e}.\n", on_color="on_red")
+        print(error_message)
         return False
 
     return True
@@ -430,7 +432,8 @@ def validate_letter(letter_guess, remaining_letters):
 
     except ValueError as e:
         os.system('cls||clear')
-        print(f"ValueError: {e}. Please enter one of the remaining letters (shown below).\n")
+        error_message = colored(f"ValueError: {e}. Please enter one of the remaining letters (shown below).\n", on_color="on_red")
+        print(error_message)
         return False
 
     return True
