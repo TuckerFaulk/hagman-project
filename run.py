@@ -295,12 +295,17 @@ def display_game_word(game_word):
 
 def game_won(game_word, lives, category, hidden_game_word, alphabet, hangman):
     """
-
+    Displays Game Won message, then runs reset_game()
     """
     os.system('cls||clear')
 
     game_word = display_game_word(game_word)
-    print(f"Congratulations!!! You have guessed the correct answer which was {game_word}, with {lives} lives remaining.\n")
+    f = Figlet(font='big')
+    title = f.renderText("CONGRATS!!!")
+    colored_title = colored(title, on_color="on_blue")
+
+    print(colored_title)
+    print(f"You have guessed the correct answer which was {game_word}, with {lives} lives remaining.\n")
 
     print(f"{category}\n")
     print(hidden_game_word)
