@@ -31,6 +31,22 @@ def game_title():
     print(colored_title)
 
 
+def how_to_play():
+    """
+    Displays the rules of the game
+    """
+    print("How to Play?\n")
+    print("- Suggest letters to see if they are contained in the hidden answer.")
+    print("- If the letter is not in the hidden answer, you lose a life.")
+    print("- To win the game, continue to suggest letters until all of the letters in the hidden answer are revealed.")
+    print("- Although, if you guess too many incorrect letters and lose all your lives, the game is lost.\n")
+
+    print("- At any point, if you think you know the answer, type this instead of guessing a letter to see if you are correct and win the game.")
+    print("- But note that if you guess incorrectly, a life will be lost.\n")
+
+    print("GOODLUCK!!!\n")
+
+
 def select_difficluty():
     """
     Request for user to select game difficulty: Hard (5 Lives),
@@ -407,6 +423,7 @@ def main():
     Run all program functions
     """
     game_title()
+    how_to_play()
     difficulty, lives = select_difficluty()
     column, category = select_category()
     game_word = retrieve_word(column)
