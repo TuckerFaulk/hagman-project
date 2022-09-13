@@ -37,8 +37,11 @@ def how_to_play():
     """
     Displays the rules of the game
     """
-    print("- Guess the mystery answer one letter at a time before you run out of lives.")
-    print("- If you are feeling lucky, type a guess instead of a letter to see if you are correct.\n")
+    sleep(2)
+    print("Guess the mystery answer one letter at a time before you run out of lives.\n")
+    sleep(2)
+    print("If you are feeling lucky, type a guess instead of a letter to see if you are correct.\n")
+    sleep(2)
 
 
 def select_difficluty():
