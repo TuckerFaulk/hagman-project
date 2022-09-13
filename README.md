@@ -2,7 +2,12 @@
 
 My idea for this project was to develop an online game for players to enjoy.
 
-The object of the game is to ...
+The object of the game is to:
+
+- Suggest letters to see if they are contained in the hidden answer.
+- If the letter is not in the hidden answer, you lose a life.
+- To win the game, continue to suggest letters until all of the letters in the hidden answer are revealed.
+- Although, if you guess too many incorrect letters and lose all your lives, the game is lost.
 
 ![Am I Responsive Image]()
 
@@ -80,6 +85,40 @@ The live link for the site can be found here - https://hangman-project-tf.heroku
 
 
 ![How to play?]()
+
+### Guess Answer
+
+At any point, if the player thinks they know the answer, they can type there guess instead of a letter to see if they are correct and win the game.
+
+- But note that if you guess incorrectly, a life will be lost.
+
+### Adding Game Categories and Answers
+
+I wanted to make sure that the answers and categories of the game were easy to add to. This was to keep the game interesting if players have guessed all of the possible answers in each category.
+
+To do this, instead of having a list of answers as a variable, I set up an Excel Spreadsheet with columns of answers based on a category, and an API is used to retreive this information and randomise an answer.
+
+Another bonus to this is that it makes the Hangman game customisable. Add answers of your favourite category or add keyword for something which you are revising.
+
+The game has been programmed so, when a new Categorey is added, this is included as an option to be selected in the Category Section of the game. This category may also be selected when a 'Random' option is selected.
+
+<!-- Show Image of the Category Section -->
+<!-- Show image of a new Category in Excel -->
+<!-- Show image of New Category Section -->
+
+To add another Category and/or Answers:
+
+Add New Category
+
+1. Type in your new Category in the first row of the next empty column. 
+
+2. Add your new answers in the column under the Category (NB: Ensure that the answers are typed in all lowercase). 
+
+3. Save this file and your new category will be added as an option in the Hangman Game. The new answers added will then be selected randomly.
+
+Add New Answers in an Existing Category
+
+1. Just add new answers to the bottom of the list in the appropriate category and they will then be available to be randomly selected in the Hangman Game.
 
 ### Other Features
 

@@ -52,7 +52,7 @@ def how_to_play():
         os.system('cls||clear')
         return True
     else:
-        game_title()
+        os.system('cls||clear')
         return False
 
 def select_difficluty():
@@ -343,7 +343,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
         display_alphabet = ''.join(game.alphabet)
         print(f"Remaining letters: {display_alphabet.upper()}\n")
 
-        letter_guess = input("Select a letter from the remaining in the letters above:\n")
+        letter_guess = input("Select a letter from the remaining in the letters above (or type your guess):\n")
 
         # Guess Game Word Feature: if a string more than 3 letters is input,
         # the following treats it as a guess and checks if it is equal to the game word.
