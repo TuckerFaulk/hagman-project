@@ -37,13 +37,8 @@ def how_to_play():
     """
     Displays the rules of the game
     """
-    print("How to Play?\n")
-    print("1. Suggest letters to see if they are contained in the hidden answer.")
-    print("2. If the letter is not in the hidden answer, you lose a life.")
-    print("3. To win the game, continue to suggest letters until all of the letters in the hidden answer are revealed.")
-    print("4. Although, if you guess too many incorrect letters and lose all your lives, the game is lost.")
-    print("5. At any point, if you think you know the answer, type this instead of guessing a letter to see if you are correct and win the game.")
-    print("6. But note that if you guess incorrectly, a life will be lost.\n")
+    print("- Guess the mystery answer one letter at a time before you run out of lives.")
+    print("- If you are feeling lucky, type a guess instead of a letter to see if you are correct.\n")
 
 
 def select_difficluty():
@@ -51,6 +46,7 @@ def select_difficluty():
     Request for user to select game difficulty: Hard (5 Lives),
     Medium (6 Lives), Easy (7 Lives)
     """
+    # os.system('cls||clear')
     while True:
         print("Please select your game difficulty.\n")
 
@@ -356,7 +352,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
                 print(colored_title)
                 print(f"You guessed that the answer is '{letter_guess}' which is incorrect. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
 
-                print(f"{game.category}\n")
+                print(f"{game.category}\n") # Update
                 print(game.hidden_game_word)
                 hangman = display_hangman(difficulty, game.lives)
                 print(hangman)
@@ -432,8 +428,7 @@ def main():
     Run all program functions
     """
     game_title()
-    # how_to_play()
-    # sleep(3)
+    how_to_play()
     difficulty, lives = select_difficluty()
     column, category = select_category()
     game_word = retrieve_word(column)
