@@ -9,7 +9,7 @@ The object of the game is to:
 - To win the game, continue to suggest letters until all of the letters in the hidden answer are revealed.
 - Although, if you guess too many incorrect letters and lose all your lives, the game is lost.
 
-![Am I Responsive Image]()
+![Am I Responsive Image](assets/readme-images/am-i-responsive.jpg)
 
 The live link for the site can be found here - https://hangman-project-tf.herokuapp.com/
 
@@ -37,9 +37,9 @@ The live link for the site can be found here - https://hangman-project-tf.heroku
   - [Content](#content)
   - [Media](#media)
 
-# Design
+# Design and Planning
 
-**Text and Background Color**
+**Logo Font and Color**
 
 
 
@@ -51,13 +51,13 @@ The live link for the site can be found here - https://hangman-project-tf.heroku
 
 ![Flow Chart Process Plan]()
 
+# Languages Used
+
+- Python
+
 # Features
 
 ## Existing Features:
-
-### Languages Used
-
-- Python
 
 ### Logo and Subtitle
 
@@ -65,38 +65,37 @@ The live link for the site can be found here - https://hangman-project-tf.heroku
 
 ### How to Play
 
+I have added a 'How to Play?' section to ensure that the player understands the objective of the game and this section also introduces the feature for the player to guess the whole answer at any point in the game.
 
 ### Select Difficulty
 
+To make the game more interesting for the player, I have added a difficulty level which they are able to select. Each difficulty level corresponds to a number of lives: Easy = 7 Lives; Medium = 6 Lives; Hard = 5 Lives.
+
 ### Select Category
+
+An option has been added for the player to select a category for answer which they would like to guess. If they player is feeling lucky, they are able to select for a random category to be chosen.
 
 ### Main Game Area
 
-- Category
-- Hidden Word
-- List of Remaining Letters
-- Input Request
+- Display Category: Reminds the player of the category of the answer.
+- Hidden Word: The word, phase or sentence which the player is trying to guess. This updates as letters are guessed correctly.
+- List of Remaining Letters: Reminds the player of the list of letters which they have left to guess from.
+- Input Request: Requests for the player to guess a letter or the answer.
 
 - Game Progress Message
-- Hangman Design and Number of Lives Remaining
+- Hangman Design and Number of Lives Remaining: Follows the classic design of the Hangman game as an incorrect guess is made.
 - Error Messages
 - Game Won/Game Lost Message
 
 - Request to reset the Game
 
-### Validation Messages
-#### - Alert Messages
-
-![Alert Message 1]()
-![Alert Message 2]()
-
 ## Other Features:
 
 ### Guess Answer
 
-At any point, if the player thinks they know the answer, they can type there guess instead of a letter to see if they are correct and win the game.
+At any point, if the player thinks they know the answer, they can type there guess instead of a letter to see if they are correct and win the game. If an incorrect guess is made, a life will be lost.
 
-- But note that if you guess incorrectly, a life will be lost.
+To ensure that there is room for error from the player, the game will only accept an answer guess if it is longer than 3 characters (the shortest answer to guess is 4 characters long). This means that if the player accidentially submits two or three random letters, this is not accepted and an error message is displayed.
 
 ### Adding Game Categories and Answers
 
@@ -111,6 +110,8 @@ The game has been programmed so, when a new Categorey is added, this is included
 <!-- Show Image of the Category Section -->
 <!-- Show image of a new Category in Excel -->
 <!-- Show image of New Category Section -->
+
+Link for the Category Spreadsheet: https://docs.google.com/spreadsheets/d/1yZvlt76H67GoI1nYCoELXNyLjRzGpB4CzKvvJ7s4E1k/edit#gid=0
 
 To add another Category and/or Answers:
 
@@ -133,8 +134,6 @@ Add New Answers in an Existing Category
 
 # Testing
 
-
-
 | Test   |      Expected      |  Passed |
 |--------|:------------------:|--------:|
 |        |                    | ☑      |
@@ -142,8 +141,20 @@ Add New Answers in an Existing Category
 |        |                    | ☑      |
 
 
+# Debugging
+
+I was having an issue with the Figlet title in the Heroku deployed version of the game where it started to stack when it should have been clearing the terminal.
+
+- Checking throughout the code to see if the game_title function had been called more thano once.
+- Student Support
+
+Solution
+
 # Data Model
 
+## Classes and Object Oriented Programming
+
+I wanted to use a class for the main varibles of the game with methods for updating the game.
 
 ## Validator Testing
 
@@ -169,7 +180,7 @@ There were no unfixed bugs identified during the testing of this site.
 
 # Deployment
 
- 
+
 
 The live link for the site can be found here - https://hangman-project-tf.herokuapp.com/
 
@@ -178,8 +189,4 @@ The live link for the site can be found here - https://hangman-project-tf.heroku
 
 
 ## Content
-
-
-
-## Media
 
