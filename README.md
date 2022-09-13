@@ -1,31 +1,133 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Hangman | Terminal Pyhton Game! 
 
-Welcome TuckerFaulk,
+My idea for this project was to develop an online game for players to enjoy.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+The object of the game is to ...
 
-## Reminders
+![Am I Responsive Image]()
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+The live link for the site can be found here - https://hangman-project-tf.herokuapp.com/
 
-## Creating the Heroku app
+# Table of contents
+- [Design](#design)
+  - [Text and Background Color](#text-and-background-color)
+  - [Game Area Design](#game-area-design)
+  - [Game Process Planning Flow Chart](#game-process-planning-flow-chart)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+    - [Languages Used](#languages-used)
+    - [Header including Navigation](#Header-including-navigation)
+    - [Game Area](#game-area)
+    - [Pop-up Messages](#pop-up-messages)
+    - [How to Play](#how-to-play)
+    - [Footer](#footer)
+    - [Other Features](#other-features)
+  - [Future Features](#future-features)
+- [Testing](#testing)
+  - [Validator Testing](#validator-testing)
+  - [Unfixed Bugs](#unfixed-bugs)
+  - [Libraries and Programs Used](#libraries-and-programs-used)
+- [Deployment](#deployment)
+- [Credits](#credits)
+  - [Content](#content)
+  - [Media](#media)
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+# Design
 
-1. `heroku/python`
-2. `heroku/nodejs`
+**Text and Background Color**
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
 
-Connect your GitHub repository and deploy as normal.
+**Game Area Design**
 
-## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
 
------
-Happy coding!
+**Game Process Planning Flow Chart**
+
+![Flow Chart Process Plan]()
+
+# Features
+
+## Existing Features:
+
+### Languages Used
+
+- Python
+
+### Game Area
+
+
+
+![Game Area]()
+
+### Validation Messages
+
+#### - Game Won
+
+![Game Won Message]()
+
+#### - Game Bust
+
+![Game Bust Message]()
+
+#### - Alert Messages
+
+![Alert Message 1]()
+![Alert Message 2]()
+
+#### How to Play
+
+
+
+![How to play?]()
+
+### Other Features
+
+
+
+## Future Features
+
+- 
+
+# Testing
+
+
+
+## Validator Testing
+
+- PEP8Online:  
+
+![PEP8Online Checker]()
+
+- Lighthouse (Accessibility Audit): The page achieved a great accessibility performance.
+
+![Lighthouse Accessibility Audit]()
+
+## Unfixed Bugs
+
+There were no unfixed bugs identified during the testing of this site.
+
+## Libraries and Programs Used
+
+- Github: Store Repository
+- Gitpod: Create the html and css files
+- Google Chrome, Microsoft Edge, Mozilla Firefox, Safari: Site testing on alternative browsers
+- Microsoft OneNote: Planning notes for the project
+- Am I Responsive: Screenshots of the final project for the README file
+
+# Deployment
+
+ 
+
+The live link for the site can be found here - https://hangman-project-tf.herokuapp.com/
+
+# Credits
+
+
+
+## Content
+
+
+
+## Media
+
