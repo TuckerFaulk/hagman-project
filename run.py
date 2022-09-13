@@ -119,7 +119,7 @@ def select_category():
         category_column = randrange((len(categories_row)))
         category = categories_row[category_column]
         os.system('cls||clear')
-        print(f"The random category selected for you is {category}.\n")
+        print(f"The random category selected for you is: \n")
 
     category_column += 1
 
@@ -308,12 +308,6 @@ def game_won(game_word, lives, category, hidden_game_word, alphabet, hangman):
     print(colored_title)
     print(f"You have guessed the correct answer which was {game_word}, with {lives} lives remaining.\n")
 
-    # print(f"{category}\n")
-    # print(hidden_game_word)
-    # print(hangman)
-    # display_alphabet = ''.join(alphabet)
-    # print(f"Remaining letters: {display_alphabet.upper()}\n")
-
     reset_game()
 
 
@@ -401,15 +395,10 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
             colored_title = colored(title, on_color="on_blue")
 
             print(colored_title)
-            print(f"The letter '{game.letter_guess}' is not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.\n")
-
-            print(f"{game.category}\n")
-            print(game.hidden_game_word)
+            print(f"The letter '{game.letter_guess}' is not in the answer. You have 0 lives remaining. The answer which you was trying to guess was {game_word}.")
 
             hangman = display_hangman(difficulty, game.lives)
             print(hangman)
-
-            print(f"Remaining letters: {display_alphabet.upper()}\n")
 
             reset_game()
 
