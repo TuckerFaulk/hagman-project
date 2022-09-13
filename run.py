@@ -1,11 +1,12 @@
-from random import randrange
+from random import randrange # generates random numbers
 import os
+from time import sleep  # allows time delay for print statements
 from pyfiglet import Figlet
 from termcolor import colored
 import gspread
 from google.oauth2.service_account import Credentials
 from hangman import display_hangman
-from time import sleep  # allows time delay for print statements
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -442,8 +443,8 @@ def main():
     Run all program functions
     """
     game_title()
-    how_to_play()
-    sleep(5)
+    # how_to_play()
+    # sleep(3)
     difficulty, lives = select_difficluty()
     column, category = select_category()
     game_word = retrieve_word(column)
