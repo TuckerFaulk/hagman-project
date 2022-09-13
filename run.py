@@ -308,11 +308,11 @@ def game_won(game_word, lives, category, hidden_game_word, alphabet, hangman):
     print(colored_title)
     print(f"You have guessed the correct answer which was {game_word}, with {lives} lives remaining.\n")
 
-    print(f"{category}\n")
-    print(hidden_game_word)
-    print(hangman)
-    display_alphabet = ''.join(alphabet)
-    print(f"Remaining letters: {display_alphabet.upper()}\n")
+    # print(f"{category}\n")
+    # print(hidden_game_word)
+    # print(hangman)
+    # display_alphabet = ''.join(alphabet)
+    # print(f"Remaining letters: {display_alphabet.upper()}\n")
 
     reset_game()
 
