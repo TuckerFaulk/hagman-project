@@ -36,13 +36,12 @@ def how_to_play():
     Displays the rules of the game
     """
     print("How to Play?\n")
-    print("- Suggest letters to see if they are contained in the hidden answer.")
-    print("- If the letter is not in the hidden answer, you lose a life.")
-    print("- To win the game, continue to suggest letters until all of the letters in the hidden answer are revealed.")
-    print("- Although, if you guess too many incorrect letters and lose all your lives, the game is lost.\n")
-
-    print("- At any point, if you think you know the answer, type this instead of guessing a letter to see if you are correct and win the game.")
-    print("- But note that if you guess incorrectly, a life will be lost.\n")
+    print("1. Suggest letters to see if they are contained in the hidden answer.")
+    print("2. If the letter is not in the hidden answer, you lose a life.")
+    print("3. To win the game, continue to suggest letters until all of the letters in the hidden answer are revealed.")
+    print("4. Although, if you guess too many incorrect letters and lose all your lives, the game is lost.")
+    print("5. At any point, if you think you know the answer, type this instead of guessing a letter to see if you are correct and win the game.")
+    print("6. But note that if you guess incorrectly, a life will be lost.\n")
 
     player_ready = input("Are you ready to play the game (y/n)?\n")
 

@@ -1,4 +1,4 @@
-# Hangman | Terminal Pyhton Game! 
+# Hangman | Python Terminal Game! 
 
 My idea for this project was to develop an online game for players to enjoy.
 
@@ -59,32 +59,38 @@ The live link for the site can be found here - https://hangman-project-tf.heroku
 
 - Python
 
-### Game Area
+### Logo and Subtitle
 
 
 
-![Game Area]()
+### How to Play
+
+
+### Select Difficulty
+
+### Select Category
+
+### Main Game Area
+
+- Category
+- Hidden Word
+- List of Remaining Letters
+- Input Request
+
+- Game Progress Message
+- Hangman Design and Number of Lives Remaining
+- Error Messages
+- Game Won/Game Lost Message
+
+- Request to reset the Game
 
 ### Validation Messages
-
-#### - Game Won
-
-![Game Won Message]()
-
-#### - Game Bust
-
-![Game Bust Message]()
-
 #### - Alert Messages
 
 ![Alert Message 1]()
 ![Alert Message 2]()
 
-#### How to Play
-
-
-
-![How to play?]()
+## Other Features:
 
 ### Guess Answer
 
@@ -120,13 +126,10 @@ Add New Answers in an Existing Category
 
 1. Just add new answers to the bottom of the list in the appropriate category and they will then be available to be randomly selected in the Hangman Game.
 
-### Other Features
-
-
-
 ## Future Features
 
-- 
+- Add a scoring system
+- Add a high score table
 
 # Testing
 
@@ -137,6 +140,9 @@ Add New Answers in an Existing Category
 |        |                    | ☑      |
 |        |                    | ☑      |
 |        |                    | ☑      |
+
+
+# Data Model
 
 
 ## Validator Testing
