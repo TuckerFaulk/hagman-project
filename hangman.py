@@ -1,9 +1,3 @@
-from datetime import date
-
-today = date.today()
-date = today.strftime("%d/%m/%Y")
-
-
 def display_hangman(difficulty, lives):
     """
     Complete
@@ -18,7 +12,6 @@ _________
 |        |
 |       / \\
 |___________
-~ R.I.P ~ {date} ~
             """
         elif lives == 1:
             hangman = """
@@ -104,7 +97,6 @@ _________
 |        |
 |       / \\
 |___________
-~ R.I.P ~ {date} ~
         """
         elif lives == 1:
             hangman = """
@@ -178,7 +170,6 @@ _________
 |        |
 |       / \\
 |___________
-~ R.I.P ~ {date} ~
         """
         elif lives == 1:
             hangman = """

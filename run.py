@@ -38,10 +38,10 @@ def how_to_play():
     Displays the rules of the game
     """
     sleep(2)
-    print("Guess the mystery answer one letter at a time before you run out of lives.\n")
-    sleep(2)
+    print("Guess the mystery answer one letter at a time before you run out of lives.")
+    sleep(3)
     print("If you are feeling lucky, type a guess instead of a letter to see if you are correct.\n")
-    sleep(2)
+    sleep(3)
 
 
 def select_difficluty():
@@ -49,7 +49,6 @@ def select_difficluty():
     Request for user to select game difficulty: Hard (5 Lives),
     Medium (6 Lives), Easy (7 Lives)
     """
-    # os.system('cls||clear')
     while True:
         print("Please select your game difficulty.\n")
 
