@@ -5,6 +5,7 @@ from termcolor import colored
 import gspread
 from google.oauth2.service_account import Credentials
 from hangman import display_hangman
+from time import sleep  # allows time delay for print statements
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -43,16 +44,6 @@ def how_to_play():
     print("5. At any point, if you think you know the answer, type this instead of guessing a letter to see if you are correct and win the game.")
     print("6. But note that if you guess incorrectly, a life will be lost.\n")
 
-    player_ready = input("Are you ready to play the game (y/n)?\n")
-
-    player_ready.lower()
-
-    if player_ready == "y":
-        os.system('cls||clear')
-        return True
-    else:
-        os.system('cls||clear')
-        return False
 
 def select_difficluty():
     """
@@ -451,11 +442,8 @@ def main():
     Run all program functions
     """
     game_title()
-
-    while True:
-        if how_to_play():
-            break
-
+    how_to_play()
+    sleep(5)
     difficulty, lives = select_difficluty()
     column, category = select_category()
     game_word = retrieve_word(column)
