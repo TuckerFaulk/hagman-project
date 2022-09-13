@@ -93,6 +93,13 @@ The live link for the site can be found here - https://hangman-project-tf.heroku
 
 
 
+| Test   |      Expected      |  Passed |
+|--------|:------------------:|--------:|
+|        |                    | ☑      |
+|        |                    | ☑      |
+|        |                    | ☑      |
+
+
 ## Validator Testing
 
 - PEP8Online:  

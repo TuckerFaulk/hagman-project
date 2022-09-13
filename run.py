@@ -44,8 +44,16 @@ def how_to_play():
     print("- At any point, if you think you know the answer, type this instead of guessing a letter to see if you are correct and win the game.")
     print("- But note that if you guess incorrectly, a life will be lost.\n")
 
-    print("GOODLUCK!!!\n")
+    player_ready = input("Are you ready to play the game (y/n)?\n")
 
+    player_ready.lower()
+
+    if player_ready == "y":
+        os.system('cls||clear')
+        return True
+    else:
+        game_title()
+        return False
 
 def select_difficluty():
     """
@@ -444,7 +452,11 @@ def main():
     Run all program functions
     """
     game_title()
-    how_to_play()
+
+    while True:
+        if how_to_play():
+            break
+
     difficulty, lives = select_difficluty()
     column, category = select_category()
     game_word = retrieve_word(column)
