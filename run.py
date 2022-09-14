@@ -389,7 +389,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
 
                 hangman = display_hangman(difficulty, game.lives)
                 print(hangman)
-                
+
                 reset_game()
 
         elif validate_letter(letter_guess, game.alphabet):
@@ -479,4 +479,3 @@ def main():
 
 
 main()
-
