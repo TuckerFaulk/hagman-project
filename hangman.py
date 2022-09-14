@@ -10,7 +10,7 @@ def display_hangman(difficulty, lives):
     """
     if difficulty == "Easy":
         if lives == 0:
-            hangman = f"""
+            hangman = f"""\
 _________
 |/       |
 |        0
@@ -20,7 +20,7 @@ _________
 |___________ ~ {date} ~
             """
         elif lives == 1:
-            hangman = """
+            hangman = """\
 _________
 |/       |
 |        0
@@ -32,7 +32,7 @@ _________
 1 Lives Remaining
             """
         elif lives == 2:
-            hangman = """
+            hangman = """\
 _________
 |/       |
 |        0
@@ -44,7 +44,7 @@ _________
 2 Lives Remaining
         """
         elif lives == 3:
-            hangman = """
+            hangman = """\
 _________
 |/       |
 |        0
@@ -56,7 +56,7 @@ _________
 3 Lives Remaining
         """
         elif lives == 4:
-            hangman = """
+            hangman = """\
 _________
 |/       |
 |
@@ -68,7 +68,7 @@ _________
 4 Lives Remaining
         """
         elif lives == 5:
-            hangman = """
+            hangman = """\
 _________
 |/
 |
@@ -80,7 +80,7 @@ _________
 5 Lives Remaining
         """
         elif lives == 6:
-            hangman = """
+            hangman = """\
 
 |/
 |
@@ -95,7 +95,7 @@ _________
             hangman = " "
     elif difficulty == "Medium":
         if lives == 0:
-            hangman = f"""
+            hangman = f"""\
 _________
 |/       |
 |        0
@@ -105,7 +105,7 @@ _________
 |___________ ~ {date} ~
         """
         elif lives == 1:
-            hangman = """
+            hangman = """\
 _________
 |/       |
 |        0
@@ -117,7 +117,7 @@ _________
 1 Lives Remaining
         """
         elif lives == 2:
-            hangman = """
+            hangman = """\
 _________
 |/       |
 |        0
@@ -129,7 +129,7 @@ _________
 2 Lives Remaining
         """
         elif lives == 3:
-            hangman = """
+            hangman = """\
 _________
 |/       |
 |
@@ -141,7 +141,7 @@ _________
 3 Lives Remaining
         """
         elif lives == 4:
-            hangman = """
+            hangman = """\
 _________
 |/
 |
@@ -153,7 +153,7 @@ _________
 4 Lives Remaining
         """
         elif lives == 5:
-            hangman = """
+            hangman = """\
 
 |/
 |
@@ -168,7 +168,7 @@ _________
             hangman = " "
     elif difficulty == "Hard":
         if lives == 0:
-            hangman = f"""
+            hangman = f"""\
 _________
 |/       |
 |        0
@@ -178,7 +178,7 @@ _________
 |___________ ~ {date} ~
         """
         elif lives == 1:
-            hangman = """
+            hangman = """\
 _________
 |/       |
 |        0
@@ -190,7 +190,7 @@ _________
 1 Life Remaining
         """
         elif lives == 2:
-            hangman = """
+            hangman = """\
 _________
 |/       |
 |        0
@@ -202,7 +202,7 @@ _________
 2 Lives Remaining
         """
         elif lives == 3:
-            hangman = """
+            hangman = """\
 _________
 |/       |
 |
@@ -214,7 +214,7 @@ _________
 3 Lives Remaining
         """
         elif lives == 4:
-            hangman = """
+            hangman = """\
 
 |/
 |

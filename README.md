@@ -206,7 +206,23 @@ To add another Category and/or Answers:
 
 ## Classes and Object Oriented Programming
 
-I wanted to use a class for the main varibles of the game with methods for updating the game.
+I wanted to use a class as a container for the main varibles of the game with methods for updating the game. The main game varibles which have been included in this class are:
+
+- alphabet: list of letters the player has left to choose from
+- letter_guess: the players letter guess
+- game_word: the answer the player is trying to guess
+- hidden_game_word: the hidden answer which is displayed for the player to guess
+- lives: number of the lives the player has left
+- category: the category chosen by the player
+
+The main function of the game is split into two stages of functions: 
+
+Stage 1. The first stage of functions retrieves the game infromation to define the class varibles.
+    - The player selects the game difficulty ("number of lives") and "category"
+    - The category is then used to randomly choose a "game word"
+    - This is then change into the "hidden game word"
+
+Stage 2: The second stage (play_game fucntion) then uses the class methods to update the game variables and cycles through this until the game is won or lost.
 
 # Testing
 

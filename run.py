@@ -92,11 +92,13 @@ def select_category():
         print("Please select one of the following categories, or choose\
  'Random' if you would like us to pick one for you.\n")
 
+        # Retrieves Categories from the first row of the google sheets page
         data = CATEGORIES.get_all_values()
         categories_row = data[0]
 
         num = 1
 
+        # Displays the categories for the player and requests their selection
         for category in categories_row:
             print(f"{num} - {category}")
             num += 1
@@ -115,6 +117,7 @@ def select_category():
 
     category_column = category_input - 1
 
+    # Accepts the chosen category or selects a random if this option was chosen
     if category_input <= len(categories_row):
         os.system('cls||clear')
         category = categories_row[category_column]
@@ -164,7 +167,8 @@ def validate_data(value, num_of_options):
 
 def retrieve_word(column):
     """
-    Retrieve word, phrase or sentence from the selected category column
+    Retrieve random word, phrase or sentence from the selected category column
+    Changes the spaces in the game answer into slashes
     """
     column_values = CATEGORIES.col_values(column)
     column_values.pop(0)
@@ -187,7 +191,7 @@ def retrieve_word(column):
 
 def hide_game_word(game_word):
     """
-    Change the game word into dashes (-, letters) and slashes (/, spaces)
+    Change the game word into dashes (-, letters)
     ready for the player to guess
     """
     game_word_split = list(game_word)
@@ -211,7 +215,8 @@ def hide_game_word(game_word):
 
 class Game:
     """
-    Main game play class
+    Main game play class: A container for the game variables
+    with methods to update them
     """
     # Class variable
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
@@ -329,7 +334,11 @@ def game_won(game_word, lives):
 def play_game(game_word, hidden_game_word, lives, category, difficulty):
     """
     Main game play
-    Checks whether game won, lost or to continue
+    Requests letter guess or answer guess from the player
+    Checks whether letter guess is correct
+    Correct: Updates hidden word and removes letter guess from alphabet
+    Incorrect: Removes life and removes letter guess from alphabet
+    Reruns functions unti game won or lost
     """
     while True:
         game = Game("", game_word, hidden_game_word, lives, category)
@@ -366,6 +375,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
                           game.category, difficulty)
             else:
                 os.system('cls||clear')
+
                 game_word = display_game_word(game.game_word)
 
                 f = Figlet(font='big')
@@ -377,11 +387,9 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
  is incorrect. You have 0 lives remaining. The answer\
  which you was trying to guess was {game_word}.\n")
 
-                print(f"{game.category}\n")  # Update
-                print(game.hidden_game_word)
                 hangman = display_hangman(difficulty, game.lives)
                 print(hangman)
-                print(f"Remaining letters: {display_alphabet.upper()}\n")
+                
                 reset_game()
 
         elif validate_letter(letter_guess, game.alphabet):
@@ -389,10 +397,12 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
 
     game.letter_guess = letter_guess.lower()
 
+    # Checks if letter_guess is in the game_word
     if game.check_game_word():
         game.change_hidden_letter()
         game.remove_letter_guess()
 
+        # Checks if game won or requests another letter guess
         if game.hidden_game_word.lower() == game.game_word:
             game_won(game.game_word, game.lives)
         else:
@@ -403,6 +413,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
         game.remove_life()
         game.remove_letter_guess()
 
+        # Check if the plyer has lives remaining. If not game lost.
         if game.lives > 0:
             os.system('cls||clear')
             print(f"The letter '{game.letter_guess}' is not in the answer.\
@@ -431,7 +442,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
 
 def validate_letter(letter_guess, remaining_letters):
     """
-    Inside the try checks whether an string has been entered and
+    Inside the try checks whether a string has been entered and
     whether it is within the list of remaining letters to guess.
     Raises ValueError as appropriate.
     """
