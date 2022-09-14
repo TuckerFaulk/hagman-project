@@ -39,10 +39,10 @@ def how_to_play():
     """
     sleep(2)
     print("Guess the mystery answer one letter at a time before you run out of\
-         lives.")
+ lives.")
     sleep(3)
     print("If you are feeling lucky, type a guess instead of a letter to see\
-         if you are correct.\n")
+ if you are correct.\n")
     sleep(3)
 
 
@@ -64,7 +64,7 @@ def select_difficluty():
 
         print("")
         input_value = input("Which difficulty would you like to select (1-3)\
-            ?\n")
+?\n")
 
         if validate_data(input_value, 3):
             break
@@ -78,7 +78,7 @@ def select_difficluty():
 
     os.system('cls||clear')
     print(f"You have selected game difficulty {difficulty} and will have\
-         {lives} lives.\n")
+ {lives} lives.\n")
 
     return difficulty, lives
 
@@ -90,7 +90,7 @@ def select_category():
     """
     while True:
         print("Please select one of the following categories, or choose\
-             'Random' if you would like us to pick one for you.\n")
+ 'Random' if you would like us to pick one for you.\n")
 
         data = CATEGORIES.get_all_values()
         categories_row = data[0]
@@ -106,7 +106,7 @@ def select_category():
         num_of_categories = len(categories_row) + 1
 
         category_input = input(f"Which category number would you like to\
-             select (1-{num_of_categories})?\n")
+ select (1-{num_of_categories})?\n")
 
         if validate_data(category_input, num_of_categories):
             break
@@ -143,13 +143,13 @@ def validate_data(value, num_of_options):
         if int(value) > num_of_options:
             raise IndexError(
                 f"Please enter a value between 1-{num_of_options}. You entered\
-                     '{value}'"
+ '{value}'"
             )
 
     except ValueError:
         os.system('cls||clear')
         error_message = colored(f"ValueError: Please enter a value between\
-             1-{num_of_options}. You entered '{value}'.\n", on_color="on_red")
+ 1-{num_of_options}. You entered '{value}'.\n", on_color="on_red")
         print(error_message)
         return False
 
@@ -285,7 +285,7 @@ def reset_game():
     else:
         game_title()
         print("Thank you for playing Hangman. We hope you had fun!!!\
-             Come back soon.\n")
+ Come back soon.\n")
 
 
 def display_game_word(game_word):
@@ -308,7 +308,7 @@ def display_game_word(game_word):
     return display_word
 
 
-def game_won(game_word, lives, category, hidden_game_word, alphabet, hangman):
+def game_won(game_word, lives):
     """
     Displays Game Won message, then runs reset_game()
     """
@@ -321,7 +321,7 @@ def game_won(game_word, lives, category, hidden_game_word, alphabet, hangman):
 
     print(colored_title)
     print(f"You have guessed the correct answer which was {game_word},\
-         with {lives} lives remaining.\n")
+ with {lives} lives remaining.\n")
 
     reset_game()
 
@@ -344,7 +344,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
         print(f"Remaining letters: {display_alphabet.upper()}\n")
 
         letter_guess = input("Select a letter from the remaining in the\
-             letters above (or type your guess):\n")
+ letters above (or type your guess):\n")
 
         # Guess Game Word Feature: if a string more than 3 letters is input,
         # the following treats it as a guess and checks if it is equal to
@@ -353,8 +353,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
 
         if len(letter_guess) > 3:
             if letter_guess.title() == display_game_word(game.game_word):
-                game_won(game.game_word, game.lives, game.category,
-                         game.hidden_game_word, game.alphabet, hangman)
+                game_won(game.game_word, game.lives)
                 return None
             else:
                 game.remove_life()
@@ -362,7 +361,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
             if game.lives > 0:
                 os.system('cls||clear')
                 print(f"You guessed that the answer is '{letter_guess}' which\
-                     is incorrect. You have {game.lives} lives remaining.\n")
+ is incorrect. You have {game.lives} lives remaining.\n")
                 play_game(game.game_word, game.hidden_game_word, game.lives,
                           game.category, difficulty)
             else:
@@ -375,8 +374,8 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
 
                 print(colored_title)
                 print(f"You guessed that the answer is '{letter_guess}' which\
-                         is incorrect. You have 0 lives remaining. The answer\
-                        which you was trying to guess was {game_word}.\n")
+ is incorrect. You have 0 lives remaining. The answer\
+ which you was trying to guess was {game_word}.\n")
 
                 print(f"{game.category}\n")  # Update
                 print(game.hidden_game_word)
@@ -395,8 +394,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
         game.remove_letter_guess()
 
         if game.hidden_game_word.lower() == game.game_word:
-            game_won(game.game_word, game.lives, game.category,
-                     game.hidden_game_word, game.alphabet, hangman)
+            game_won(game.game_word, game.lives)
         else:
             os.system('cls||clear')
             play_game(game.game_word, game.hidden_game_word, game.lives,
@@ -408,7 +406,7 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
         if game.lives > 0:
             os.system('cls||clear')
             print(f"The letter '{game.letter_guess}' is not in the answer.\
-                   You have {game.lives} lives remaining.\n")
+ You have {game.lives} lives remaining.\n")
             play_game(game.game_word, game.hidden_game_word, game.lives,
                       game.category, difficulty)
         else:
@@ -422,8 +420,8 @@ def play_game(game_word, hidden_game_word, lives, category, difficulty):
 
             print(colored_title)
             print(f"The letter '{game.letter_guess}' is not in the answer.\
-                 You have 0 lives remaining. The answer which you was trying\
-                 to guess was {game_word}.")
+ You have 0 lives remaining. The answer which you was trying\
+ to guess was {game_word}.")
 
             hangman = display_hangman(difficulty, game.lives)
             print(hangman)
@@ -449,7 +447,7 @@ def validate_letter(letter_guess, remaining_letters):
     except ValueError as e:
         os.system('cls||clear')
         error_message = colored(f"ValueError: {e}. Please enter one of the\
-             remaining letters (shown below).\n", on_color="on_red")
+ remaining letters (shown below).\n", on_color="on_red")
         print(error_message)
         return False
 
