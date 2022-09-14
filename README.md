@@ -45,21 +45,21 @@ I initially found it difficult to add 'design' to a terminal game and that this 
 
 My original design for my Logo was as below, but after some feedback during testing, it was reported that the font was difficult to read and as such, a font was chosen for a better user experience.
 
-Original Logo
+*Original Logo*
 
 ![Original Logo](assets/readme-images/original-logo-font.png)
 
-New Logo
+*New Logo*
 
-![Original Logo](assets/readme-images/new-logo-font.jpg)
+![New Logo](assets/readme-images/new-logo-font.jpg)
 
 Once the font and color was finalised, it was used for the game won and game lost messages. It was decided for the same color to be used for these messages as the title to keep with the theme of the game.
 
-Game Won Message
+*Game Won Message*
 
 ![Game Won Message](assets/readme-images/game-won-message.jpg)
 
-Game Lost Message
+*Game Lost Message*
 
 ![Game Lost Message](assets/readme-images/game-lost-message.jpg)
 
@@ -67,13 +67,13 @@ Game Lost Message
 
 The final bit of coloring added to the game was to highlight error messages in red. This was so they could be distinguished from the game text and to alert the player.
 
-Sample Error Message - Highlighted Red
+*Sample Error Message - Highlighted Red*
 
 ![Error Message](assets/readme-images/value-error-message.jpg)
 
 **Game Process Planning Flow Chart**
 
-With there being many steps in the code and different decision stages, I initially planned out the game by setting out in stage on a flow chart.
+With there being many steps in the code and different decision stages, I initially planned out the game by setting out in stage on a flow chart (created with LucidChart).
 
 ![Flow Chart Process Plan]()
 
@@ -87,19 +87,27 @@ With there being many steps in the code and different decision stages, I initial
 
 ### Logo and Subtitle
 
+A logo and subtitle is displayed at the start of the program running so the user is aware of what they are playing.
 
+![Logo and Subtitle](assets/readme-images/new-logo-font.jpg)
 
 ### How to Play
 
-I have added a 'How to Play?' section to ensure that the player understands the objective of the game and this section also introduces the feature for the player to guess the whole answer at any point in the game.
+I have added a 'How to Play?' section to ensure that the player understands the objective of the game. This section also introduces the feature for the player to guess the whole answer at any point in the game.
+
+![How to Play](assets/readme-images)
 
 ### Select Difficulty
 
 To make the game more interesting for the player, I have added a difficulty level which they are able to select. Each difficulty level corresponds to a number of lives: Easy = 7 Lives; Medium = 6 Lives; Hard = 5 Lives.
 
+![Select Difficulty](assets/readme-images/select-difficulty.jpg)
+
 ### Select Category
 
-An option has been added for the player to select a category for answer which they would like to guess. If they player is feeling lucky, they are able to select for a random category to be chosen.
+An option has been added for the player to select a category for the answer which they would like to guess. If they player is feeling lucky, they are able to select for a random category to be chosen.
+
+![Select Category](assets/readme-images)
 
 ### Main Game Area
 
@@ -108,12 +116,48 @@ An option has been added for the player to select a category for answer which th
 - List of Remaining Letters: Reminds the player of the list of letters which they have left to guess from.
 - Input Request: Requests for the player to guess a letter or the answer.
 
-- Game Progress Message
-- Hangman Design and Number of Lives Remaining: Follows the classic design of the Hangman game as an incorrect guess is made.
-- Error Messages
-- Game Won/Game Lost Message
+![Main Game Area](assets/readme-images)
 
-- Request to reset the Game
+**Additional Displays in the Main Game Area**
+
+- Incorrect Letter Selected Message: A message is displyed when the player selects a letter which is not in the answer.
+
+![Incorrect Letter Message](assets/readme-images)
+
+- Hangman Design and Number of Lives Remaining: Follows the classic design of the Hangman game as an incorrect guess is made. The number of lives remaining is detailed so the player is aware of how many lives they have left. Each Hangman design is incremented differently depending on the difficulty level chosen: e.g. there are 7 steps (lives) from no hangman displayed to a full hangman (Medium: 6 Steps; Hard: 5 Steps). The final full Hangman displayed includes an "R.I.P" message including the date. This has been added as an additional feature.
+
+*Hangman Design - Hard with 2 Lives Remaining*
+
+![Hangman Hard 2 Lives](assets/readme-images/hangman-hard-2-lives.jpg)
+
+*Hangman Design - Hard with 0 Lives Remaining*
+
+![Hangman Hard 0 Lives](assets/readme-images/hangman-hard-0-lives.jpg)
+
+- Error Messages
+- Game Won/Game Lost Messages
+
+The font and background color of 'CONGRATS' and 'UNLUCKY' have been changed to signify whether the player has won or lost, respectively. Feedback from testing shown that it was easier for the player to know that they had ether won or lost the game with these messages rather than when they were the same font as the other game text. Providing a larger 'Congrats' message also provides the player with a sense of reward from winning.
+
+*Game Won Message*
+
+![Game Won Message](assets/readme-images/game-won-message.jpg)
+
+*Game Lost Message*
+
+![Game Lost Message](assets/readme-images/game-lost-message.jpg)
+
+- Request to reset the game
+
+Once the game is either won or lost, the player is asked whether they would like to play the game again. Inputting 'y' re-run the program from the start where as 'n' displays a thank you message.
+
+*Reset Game Message*
+
+![Reset Game Message](assets/readme-images/reset-game-message.jpg)
+
+*Thank You for Playing Message*
+
+![Player Thank You Message](assets/readme-images/thank-you-message.jpg)
 
 ## Other Features:
 
