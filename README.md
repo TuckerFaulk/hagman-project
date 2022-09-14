@@ -1,5 +1,7 @@
 # Hangman | Python Terminal Game! 
 
+![Am I Responsive Image](assets/readme-images/am-i-responsive.jpg)
+
 My idea for this project was to develop an online game for players to enjoy.
 
 The object of the game is to:
@@ -8,8 +10,6 @@ The object of the game is to:
 - If the letter is not in the hidden answer, you lose a life.
 - To win the game, continue to suggest letters until all of the letters in the hidden answer are revealed.
 - Although, if you guess too many incorrect letters and lose all your lives, the game is lost.
-
-![Am I Responsive Image](assets/readme-images/am-i-responsive.jpg)
 
 The live link for the site can be found here - https://hangman-project-tf.herokuapp.com/
 
@@ -41,13 +41,39 @@ The live link for the site can be found here - https://hangman-project-tf.heroku
 
 **Logo Font and Color**
 
+I initially found it difficult to add 'design' to a terminal game and that this was mostly limited to formatting. From some research, I did find the 'pyfiglet' and 'termcolor' libraries which could be used to change text font and add color to text printed in the terminal.
 
+My original design for my Logo was as below, but after some feedback during testing, it was reported that the font was difficult to read and as such, a font was chosen for a better user experience.
 
-**Game Area Design**
+Original Logo
 
+![Original Logo](assets/readme-images/original-logo-font.png)
 
+New Logo
+
+![Original Logo](assets/readme-images/new-logo-font.jpg)
+
+Once the font and color was finalised, it was used for the game won and game lost messages. It was decided for the same color to be used for these messages as the title to keep with the theme of the game.
+
+Game Won Message
+
+![Game Won Message](assets/readme-images/game-won-message.jpg)
+
+Game Lost Message
+
+![Game Lost Message](assets/readme-images/game-lost-message.jpg)
+
+**Error Messages**
+
+The final bit of coloring added to the game was to highlight error messages in red. This was so they could be distinguished from the game text and to alert the player.
+
+Sample Error Message - Highlighted Red
+
+![Error Message](assets/readme-images/value-error-message.jpg)
 
 **Game Process Planning Flow Chart**
+
+With there being many steps in the code and different decision stages, I initially planned out the game by setting out in stage on a flow chart.
 
 ![Flow Chart Process Plan]()
 
@@ -115,7 +141,7 @@ Link for the Category Spreadsheet: https://docs.google.com/spreadsheets/d/1yZvlt
 
 To add another Category and/or Answers:
 
-Add New Category
+**Add New Category**
 
 1. Type in your new Category in the first row of the next empty column. 
 
@@ -123,7 +149,7 @@ Add New Category
 
 3. Save this file and your new category will be added as an option in the Hangman Game. The new answers added will then be selected randomly.
 
-Add New Answers in an Existing Category
+**Add New Answers in an Existing Category**
 
 1. Just add new answers to the bottom of the list in the appropriate category and they will then be available to be randomly selected in the Hangman Game.
 
@@ -131,6 +157,12 @@ Add New Answers in an Existing Category
 
 - Add a scoring system
 - Add a high score table
+
+# Data Model
+
+## Classes and Object Oriented Programming
+
+I wanted to use a class for the main varibles of the game with methods for updating the game.
 
 # Testing
 
@@ -140,7 +172,6 @@ Add New Answers in an Existing Category
 |        |                    | ☑      |
 |        |                    | ☑      |
 
-
 # Debugging
 
 I was having an issue with the Figlet title in the Heroku deployed version of the game where it started to stack when it should have been clearing the terminal.
@@ -149,12 +180,6 @@ I was having an issue with the Figlet title in the Heroku deployed version of th
 - Student Support
 
 Solution
-
-# Data Model
-
-## Classes and Object Oriented Programming
-
-I wanted to use a class for the main varibles of the game with methods for updating the game.
 
 ## Validator Testing
 
@@ -180,7 +205,23 @@ There were no unfixed bugs identified during the testing of this site.
 
 # Deployment
 
+This project was deployed on Heroku using Code Institute's Python Essentials template. The steps taken to create the Heroku App were:
 
+**Preparing for deployment on GitHub:**
+
+1. Add a new line character ("\n") after each input request
+2. Type into the terminal 'pip3 freeze > requirements.txt' to update this file with a list of dependencies which Heroku needs to download for the application to work
+
+**Deploying on Heroku:**
+
+1. Create App
+2. Add creds.json file information to the Apps Config Vars
+3. Add the 'Python' and the 'Nodejs' buildpacks
+4. Select the GitHub Delpoyment Method, and confirm the connection to GitHub
+5. Search and connect to the Hangman Game GitHub Respository
+6. Enable 'Automatic Deploys'
+7. Then Maually deploy by selecting the 'Deploy Branch' button
+8. The app will then be successfully deployed: press the 'view' button to open the deployed site 
 
 The live link for the site can be found here - https://hangman-project-tf.herokuapp.com/
 
@@ -190,3 +231,7 @@ The live link for the site can be found here - https://hangman-project-tf.heroku
 
 ## Content
 
+Code Institute's Love Sandwiches Walkthrough Project:
+
+- Getting Set Up (Creating the Google Sheets API)
+- Deployment (Deployment to Heroku)
