@@ -190,7 +190,7 @@ I wanted to make sure that the answers and categories of the game were easy to a
 
 To do this, instead of having a list of answers as a variable, I set up a Google Sheets with columns of answers based on a category, and an API is used to retrieve this information and randomise an answer.
 
-Another bonus to this is that it makes the Hangman game customisable: players could add answers for their favourite category or add keyword for a topic which they are revising.
+Another bonus to this is that it makes the Hangman game customisable: players could add answers for their favourite category or add keywords for a topic which they are revising.
 
 The game has been programmed so, when a new category is added, this is included as an option to be selected in the Category Section of the game. This category may also be selected when a 'Random' option is selected.
 
@@ -204,9 +204,9 @@ To add another Category and/or Answers:
 
 **Add New Category**
 
-1. Type in your new Category in the first row of the next empty column. 
+1. Type in your new category in the first row of the next empty column. 
 
-2. Add your new answers in the column under the Category (NB: Ensure that the answers are typed in all lowercase). 
+2. Add your new answers in the column under the category (NB: Ensure that the answers are typed in all lowercase). 
 
 3. Save this file and your new category will be added as an option in the Hangman Game. The new answers added will then be selected randomly.
 
@@ -223,7 +223,7 @@ To add another Category and/or Answers:
 
 ## Classes and Object Oriented Programming
 
-I wanted to use a class as a container for the main variables of the game with methods for updating the game. The main game variables which have been included in this class are:
+I wanted to use a class as a container for the main variables of the game with methods for updating these variables. The main game variables which have been included in this class are:
 
 - alphabet: list of letters the player has left to choose from
 - letter_guess: the players letter guess
@@ -232,9 +232,10 @@ I wanted to use a class as a container for the main variables of the game with m
 - lives: number of the lives the player has left
 - category: the category chosen by the player
 
-The main function of the game is split into two stages of functions: 
+The main game is split into two stages of functions: 
 
-Stage 1. The first stage of functions retrieves the game information to define the class variables.
+Stage 1. The first stage of functions retrieves the game information to define the class variables:
+
     - The player selects the game difficulty ("number of lives") and "category"
     - The category is then used to randomly choose a "game word"
     - This is then change into the "hidden game word"
@@ -314,6 +315,7 @@ There were no unfixed bugs identified during the testing of this site.
 - Google Chrome, Microsoft Edge, Mozilla Firefox, Safari: Site testing on alternative browsers
 - Microsoft OneNote: Planning notes for the project
 - Am I Responsive: Screenshots of the final project for the README file
+- Lucid Charts: Planning the game process with a flow diagram
 
 # Deployment
 
