@@ -235,11 +235,33 @@ Stage 2: The second stage (play_game fucntion) then uses the class methods to up
 
 # Testing
 
-| Test   |      Expected      |  Passed |
-|--------|:------------------:|--------:|
-|        |                    | ☑      |
-|        |                    | ☑      |
-|        |                    | ☑      |
+## Test of user story (game functionality):
+
+| Test   |      Expected     |  Passed |
+|--------|:------------------|:--------:|
+|Open Website|Game Title, How to Play and Select Difficulty Displays|☑|
+|Select Difficuty|Input of each number selects the appropriate difficulty (Hard, Medium, Easy), then a message displays to inform the player that of the chosen difficulty and the number of lives they have.|☑|
+|Select Difficuty Input Validation|An error message is displayed when a non-numeric character (e.g. number, symbol, space) is input or a number which is not a option available.|☑|
+|Select Category|Input of each number selects the appropriate category. The category chosen and a hidden random answer from this category is then displayed. Selecting 'Random' chooses a random category for the player. Then displays this and a random hidden word from this category.|☑|
+|Select Category Input Validation|An error message is displayed when a non-numeric character (e.g. number, symbol, space) is input or a number which is not a option available.|☑|
+|Game Area|The category, hidden answer, letters remaining are displayed. Input message is displayed requesting the player to select a letter.|☑|
+|Correct Letter Input|The hidden answer updates displaying all instances of the letter. The game then requests for another letter if the answer is not complete. The letter guessed is removed from the remaining letter available.|☑|
+|Incorrect Letter Input|A life is removed. The hangman design is displayed (appropriate to the difficulty chosen and the number of lives remaining). The game then requests for another letter if the answer is not complete. The letter guessed is removed from the remaining letter available.|☑|
+|Letter Guess/Guess answer Input Validation|An error message is displayed when a non-alpha character (e.g. number, symbol, space) is input, a letter is guessed which has previously been guessed by the player or two or three letters are input at the same time.|☑|
+|Correct Guess Answer|Input	Game won message is displayed and input message asks the player whether they would like to play again.
+|Incorrect Guess Answer|Input	Message is displayed that the guess was incorrect. Life is removed if there are some remaining. Hangman design is update now a life has been taken.|☑|
+|Game Won|Game won title displays. Game won message displays. Input message asks the player whether they would like to play again.|☑|
+|Game Lost|Game lost title displays. Game lost message displays. Final hangman design displays. Date in final hangman is the current date. Input message asks the player whether they would like to play again.|☑|
+|Play Again Message|Input of 'y' reloads the games. Input of 'n' displays the game title and the thank you message.|☑|
+
+## Test on Alternative Browsers
+
+|   Test   |   Layout (Pass)   |   Functionality (Pass)   |
+|----------|:-----------------:|:-------------------------:|
+|Chrome    |      ☑           |            ☑             |
+|Safari    |      ☑           |            ☑             |
+|Firefox   |      ☑           |            ☑             |
+|Edge      |      ☑           |            ☑             |
 
 # Debugging
 
