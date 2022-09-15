@@ -136,7 +136,7 @@ An option has been added for the player to select a category for the answer whic
 
 - Error Messages
 
-An error message is displayed when a non-alpha character (e.g. number, symbol, space) is input or a letter is guess which has previously been guessed by the player.
+An error message is displayed when a non-alpha character (e.g. number, symbol, space) is input or a letter is guessed which has previously been guessed by the player.
 
 ![Value Error Message](assets/readme-images/value-error-message.jpg)
 
@@ -245,10 +245,10 @@ Stage 2: The second stage (play_game fucntion) then uses the class methods to up
 
 I was having an issue with the Figlet title in the Heroku deployed version of the game where it started to stack when it should have been clearing the terminal.
 
-- Checking throughout the code to see if the game_title function had been called more thano once.
+<!-- - Checking throughout the code to see if the game_title function had been called more thano once.
 - Student Support
 
-Solution
+Solution -->
 
 ## Validator Testing
 
