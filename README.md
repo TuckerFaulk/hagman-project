@@ -95,7 +95,7 @@ A logo and subtitle is displayed at the start of the program running so the user
 
 I have added a 'How to Play?' section to ensure that the player understands the objective of the game. This section also introduces the feature for the player to guess the whole answer at any point in the game.
 
-![How to Play](assets/readme-images)
+![How to Play](assets/readme-images/how-to-play.jpg)
 
 ### Select Difficulty
 
@@ -107,7 +107,7 @@ To make the game more interesting for the player, I have added a difficulty leve
 
 An option has been added for the player to select a category for the answer which they would like to guess. If they player is feeling lucky, they are able to select for a random category to be chosen.
 
-![Select Category](assets/readme-images)
+![Select Category](assets/readme-images/select-category.jpg)
 
 ### Main Game Area
 
@@ -116,13 +116,13 @@ An option has been added for the player to select a category for the answer whic
 - List of Remaining Letters: Reminds the player of the list of letters which they have left to guess from.
 - Input Request: Requests for the player to guess a letter or the answer.
 
-![Main Game Area](assets/readme-images)
+![Main Game Area](assets/readme-images/main-game-area.jpg)
 
 **Additional Displays in the Main Game Area**
 
-- Incorrect Letter Selected Message: A message is displyed when the player selects a letter which is not in the answer.
+- Incorrect Letter Message: A message is displyed when the player selects a letter which is not in the answer.
 
-![Incorrect Letter Message](assets/readme-images)
+![Incorrect Letter Message](assets/readme-images/incorrect-letter-message.jpg)
 
 - Hangman Design and Number of Lives Remaining: Follows the classic design of the Hangman game as an incorrect guess is made. The number of lives remaining is detailed so the player is aware of how many lives they have left. Each Hangman design is incremented differently depending on the difficulty level chosen: e.g. there are 7 steps (lives) from no hangman displayed to a full hangman (Medium: 6 Steps; Hard: 5 Steps). The final full Hangman displayed includes an "R.I.P" message including the date. This has been added as an additional feature.
 
@@ -135,6 +135,11 @@ An option has been added for the player to select a category for the answer whic
 ![Hangman Hard 0 Lives](assets/readme-images/hangman-hard-0-lives.jpg)
 
 - Error Messages
+
+An error message is displayed when a non-alpha character (e.g. number, symbol, space) is input or a letter is guess which has previously been guessed by the player.
+
+![Value Error Message](assets/readme-images/value-error-message.jpg)
+
 - Game Won/Game Lost Messages
 
 The font and background color of 'CONGRATS' and 'UNLUCKY' have been changed to signify whether the player has won or lost, respectively. Feedback from testing shown that it was easier for the player to know that they had ether won or lost the game with these messages rather than when they were the same font as the other game text. Providing a larger 'Congrats' message also provides the player with a sense of reward from winning.
@@ -165,21 +170,25 @@ Once the game is either won or lost, the player is asked whether they would like
 
 At any point, if the player thinks they know the answer, they can type there guess instead of a letter to see if they are correct and win the game. If an incorrect guess is made, a life will be lost.
 
+![Answer Guess](assets/readme-images/guess-answer.jpg)
+
 To ensure that there is room for error from the player, the game will only accept an answer guess if it is longer than 3 characters (the shortest answer to guess is 4 characters long). This means that if the player accidentially submits two or three random letters, this is not accepted and an error message is displayed.
+
+![Three Letter Guess](assets/readme-images/three-letter-guess.jpg)
 
 ### Adding Game Categories and Answers
 
-I wanted to make sure that the answers and categories of the game were easy to add to. This was to keep the game interesting if players have guessed all of the possible answers in each category.
+I wanted to make sure that the answers and categories of the game were easy to add to. This was to keep the game interesting if players have attempted all of the possible answers in each category.
 
-To do this, instead of having a list of answers as a variable, I set up an Excel Spreadsheet with columns of answers based on a category, and an API is used to retreive this information and randomise an answer.
+To do this, instead of having a list of answers as a variable, I set up a Google Sheets with columns of answers based on a category, and an API is used to retreive this information and randomise an answer.
 
-Another bonus to this is that it makes the Hangman game customisable. Add answers of your favourite category or add keyword for something which you are revising.
+Another bonus to this is that it makes the Hangman game customisable: players could add answers for their favourite category or add keyword for a topic which they are revising.
 
 The game has been programmed so, when a new Categorey is added, this is included as an option to be selected in the Category Section of the game. This category may also be selected when a 'Random' option is selected.
 
-<!-- Show Image of the Category Section -->
-<!-- Show image of a new Category in Excel -->
-<!-- Show image of New Category Section -->
+![Three Letter Guess](assets/readme-images/three-letter-guess.jpg)
+
+![Three Letter Guess](assets/readme-images/three-letter-guess.jpg)
 
 Link for the Category Spreadsheet: https://docs.google.com/spreadsheets/d/1yZvlt76H67GoI1nYCoELXNyLjRzGpB4CzKvvJ7s4E1k/edit#gid=0
 
@@ -243,13 +252,19 @@ Solution
 
 ## Validator Testing
 
-- PEP8Online:  
+- PEP8Online: No errors raised in both of the run.py and hangman.py files.
 
-![PEP8Online Checker]()
+*PEP8 Online Checker: run.py file*
+
+![PEP8Online Checker run.py file](assets/readme-images/pep8-check-main.jpg)
+
+*PEP8 Online Checker: hangman.py file*
+
+![PEP8Online Checker hangman.py file](assets/readme-images/pep8-check-hangman.jpg)
 
 - Lighthouse (Accessibility Audit): The page achieved a great accessibility performance.
 
-![Lighthouse Accessibility Audit]()
+![Lighthouse Accessibility Audit](assets/readme-images/lighthouse-check.jpg)
 
 ## Unfixed Bugs
 
@@ -290,6 +305,31 @@ The live link for the site can be found here - https://hangman-project-tf.heroku
 
 
 ## Content
+
+Resources Used:
+
+https://docs.gspread.org/en/latest/
+https://stackoverflow.com/questions/3996904/generate-random-integers-between-0-and-9
+https://www.geeksforgeeks.org/python-convert-list-characters-string/
+https://stackoverflow.com/questions/2084508/clear-terminal-in-python
+https://towardsdatascience.com/prettify-your-terminal-text-with-termcolor-and-pyfiglet-880de83fda6b
+http://www.figlet.org/examples.html
+https://www.pressthered.com/adding_dates_and_times_in_python/
+https://realpython.com/python-sleep/
+https://www.programiz.com/python-programming/datetime/current-datetime
+
+Hangman Design:
+
+https://codereview.stackexchange.com/questions/214471/display-command-line-hangman
+
+Categories list:
+
+https://www.timeout.com/film/best-movies-of-all-time
+https://www.imdb.com/chart/top/
+https://games4esl.com/list-of-sports/
+https://thegreatestbooks.org/
+https://www.goodreads.com/list/show/1.Best_Books_Ever
+https://www.alistofbooks.com/
 
 Code Institute's Love Sandwiches Walkthrough Project:
 
