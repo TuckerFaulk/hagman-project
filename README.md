@@ -273,12 +273,17 @@ Stage 2: The second stage (play_game fucntion) then uses the class methods to up
 
 ## Debugging
 
-I was having an issue with the Figlet title in the Heroku deployed version of the game where it started to stack when it should have been clearing the terminal.
+The main issue which I had during debugging this game was that I was having an issue with the Figlet main title in the Heroku deployed version of the game where it started to stack the 'HANGMAN' title when it should have been clearing the terminal. This only seemed to be triggered after an incorrect guess was made and then any guess after this would stack another title on top of the pile.
 
-<!-- - Checking throughout the code to see if the game_title function had been called more thano once.
-- Student Support
+**Tried during Debugging**
 
-Solution -->
+- Checking throughout the code to see if the game_title function had been called more than once.
+- Researched on Google to see if others have had the same issue.
+- Contacted Student Support: They could not find any issue with my code. They said it was potentially something in Heroku causing the issue.
+
+**Solution**
+
+I originally wanted the game title to be displayed in every section of the game. As myself and student support was not able to fix the bug, I decided to only display the game title at the start and the end of the game. After futher investigation, I think this bug started to happened when the code was longer that what could be displayed in the terminal (had to scroll down the code).
 
 ## Validator Testing
 
