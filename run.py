@@ -8,6 +8,9 @@ from google.oauth2.service_account import Credentials
 from hangman import display_hangman
 
 
+# Below code taken from Code Institute's Love Sandwiches Walkthrough Project:
+# Getting Set Up (Creating the Google Sheets API)
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
