@@ -14,28 +14,34 @@ The object of the game is to:
 The live link for the site can be found here - https://hangman-project-tf.herokuapp.com/
 
 # Table of contents
-- [Design](#design)
-  - [Text and Background Color](#text-and-background-color)
-  - [Game Area Design](#game-area-design)
+- [Design and Planning](#design-and-planning)
+  - [Logo Font and Color](#logo-font-and-color)
+  - [Error Messages](#error-messages)
   - [Game Process Planning Flow Chart](#game-process-planning-flow-chart)
+- [Languages Used](#languages-used)
 - [Features](#features)
   - [Existing Features](#existing-features)
-    - [Languages Used](#languages-used)
-    - [Header including Navigation](#Header-including-navigation)
-    - [Game Area](#game-area)
-    - [Pop-up Messages](#pop-up-messages)
+    - [Logo and Subtitle](#logo-and-subtitle)
     - [How to Play](#how-to-play)
-    - [Footer](#footer)
+    - [Select Difficulty](#select-difficulty)
+    - [Select Category](#select-category)
+    - [Main Game Area](#main-game-area)
     - [Other Features](#other-features)
+      - [Guess Answer](#guess-answer)
+      - [Adding Game Categories and Answer](#adding-game-categories-and-answers)
   - [Future Features](#future-features)
+- [Data Model](#data-model)
+  - [Classes and Object Oriented Programming](#classes-and-object-oriented-programming)
 - [Testing](#testing)
+  - [Test of User Story](#test-of-user-story-game-functionality)
+  - [Test on Alternative Browsers](#test-on-alternative-browsers)
+  - [Debugging](#debugging)
   - [Validator Testing](#validator-testing)
   - [Unfixed Bugs](#unfixed-bugs)
   - [Libraries and Programs Used](#libraries-and-programs-used)
 - [Deployment](#deployment)
 - [Credits](#credits)
   - [Content](#content)
-  - [Media](#media)
 
 # Design and Planning
 
@@ -75,7 +81,7 @@ The final bit of coloring added to the game was to highlight error messages in r
 
 With there being many steps in the code and different decision stages, I initially planned out the game by setting out in stage on a flow chart (created with LucidChart).
 
-![Flow Chart Process Plan]()
+![Flow Chart Process Plan](assets/readme-images/hangman-flowchart.jpg)
 
 # Languages Used
 
@@ -124,7 +130,9 @@ An option has been added for the player to select a category for the answer whic
 
 ![Incorrect Letter Message](assets/readme-images/incorrect-letter-message.jpg)
 
-- Hangman Design and Number of Lives Remaining: Follows the classic design of the Hangman game as an incorrect guess is made. The number of lives remaining is detailed so the player is aware of how many lives they have left. Each Hangman design is incremented differently depending on the difficulty level chosen: e.g. there are 7 steps (lives) from no hangman displayed to a full hangman (Medium: 6 Steps; Hard: 5 Steps). The final full Hangman displayed includes an "R.I.P" message including the date. This has been added as an additional feature.
+- Hangman Design and Number of Lives Remaining: The hangman design follows the classic design of the Hangman game as an incorrect guess is made. The number of lives remaining is detailed so the player is aware of how many lives they have left. Each Hangman design is incremented differently depending on the difficulty level chosen: e.g. there are 7 steps (lives) from no hangman displayed to a full hangman (Medium: 6 Steps; Hard: 5 Steps). The final full Hangman displayed includes an "R.I.P" message including the date. This has been added as an additional feature.
+
+As there were serval designs required (one for each set of lives for each difficultly), I decided to create these in a seperate file (hangman.py) and call these into the main run.py file to keep the main game play code tidier.
 
 *Hangman Design - Hard with 2 Lives Remaining*
 
@@ -186,9 +194,9 @@ Another bonus to this is that it makes the Hangman game customisable: players co
 
 The game has been programmed so, when a new Categorey is added, this is included as an option to be selected in the Category Section of the game. This category may also be selected when a 'Random' option is selected.
 
-![Three Letter Guess](assets/readme-images/three-letter-guess.jpg)
+![New Category in Google Sheets](assets/readme-images/new-category-sheets.jpg)
 
-![Three Letter Guess](assets/readme-images/three-letter-guess.jpg)
+![New Category Displayed in Game](assets/readme-images/new-category-game.jpg)
 
 Link for the Category Spreadsheet: https://docs.google.com/spreadsheets/d/1yZvlt76H67GoI1nYCoELXNyLjRzGpB4CzKvvJ7s4E1k/edit#gid=0
 
@@ -235,7 +243,7 @@ Stage 2: The second stage (play_game fucntion) then uses the class methods to up
 
 # Testing
 
-## Test of user story (game functionality):
+## Test of User Story (Game Functionality):
 
 | Test   |      Expected     |  Passed |
 |--------|:------------------|:--------:|
@@ -263,7 +271,7 @@ Stage 2: The second stage (play_game fucntion) then uses the class methods to up
 |Firefox   |      ☑           |            ☑             |
 |Edge      |      ☑           |            ☑             |
 
-# Debugging
+## Debugging
 
 I was having an issue with the Figlet title in the Heroku deployed version of the game where it started to stack when it should have been clearing the terminal.
 
